@@ -1,0 +1,65 @@
+{
+ "id": "dev-rear-lamp",
+ "title": "Dev rear lamp",
+ "created": "2026-10-24T18:53:49+02:00",
+ "status": "done",
+ "stage": null,
+ "preloaded": true,
+ "error": null,
+ "cost_usd": 0.0,
+ "counts": {
+  "requirements": 311,
+  "regulations": 4
+ },
+ "stages": [
+  {
+   "key": "profile",
+   "label": "Product profile",
+   "status": "done",
+   "detail": "",
+   "seconds": null
+  },
+  {
+   "key": "regulations",
+   "label": "Regulation selection",
+   "status": "done",
+   "detail": "",
+   "seconds": null
+  },
+  {
+   "key": "sections",
+   "label": "Section selection",
+   "status": "done",
+   "detail": "",
+   "seconds": null
+  },
+  {
+   "key": "extract",
+   "label": "Requirement extraction",
+   "status": "done",
+   "detail": "",
+   "seconds": null
+  },
+  {
+   "key": "verify",
+   "label": "Verification",
+   "status": "done",
+   "detail": "",
+   "seconds": null
+  },
+  {
+   "key": "rank",
+   "label": "Ranking and de-duplication",
+   "status": "done",
+   "detail": "",
+   "seconds": null
+  },
+  {
+   "key": "enrich",
+   "label": "Plain language and priorities",
+   "status": "done",
+   "detail": "",
+   "seconds": null
+  }
+ ]
+}

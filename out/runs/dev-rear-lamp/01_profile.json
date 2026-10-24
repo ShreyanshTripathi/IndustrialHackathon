@@ -1,0 +1,124 @@
+{
+ "product_name": "Rear Lamp",
+ "product_type": "Rear combination lamp: an exterior lighting and signalling module that combines rear position, stop and reversing lamp functions with a retro-reflector behind one outer lens in a single housing.",
+ "vehicle_categories": [
+  "M1"
+ ],
+ "mounting_location": "Vehicle rear, outboard corner (body-mounted rear lamp cluster). The drawing shows a single-side (handed) unit; the mirrored opposite-side unit is presumed.",
+ "functions": [
+  {
+   "name": "rear position lamp (presence/visibility signalling)",
+   "description": "Emits red light to the rear to indicate the vehicle's presence and width."
+  },
+  {
+   "name": "stop lamp (braking indication)",
+   "description": "Emits higher-intensity red light to the rear when the service brake is applied."
+  },
+  {
+   "name": "reversing lamp (reversing illumination)",
+   "description": "Emits white light to the rear to illuminate the area behind the vehicle and warn others that the vehicle is reversing or about to reverse."
+  },
+  {
+   "name": "retro-reflection (passive conspicuity)",
+   "description": "Reflects incident light back towards its source through moulded prism optics, so the vehicle is visible when unlit."
+  },
+  {
+   "name": "light transmission and colour definition (outer lens)",
+   "description": "The outer lens transmits and filters light to the required colour and protects the internal optics from the environment."
+  }
+ ],
+ "parts": [
+  {
+   "name": "Housing",
+   "role": "Main body carrying the optics, light sources and lens; it is the structure that mounts to the vehicle.",
+   "material": "PP or ASA/PC",
+   "electrical": false
+  },
+  {
+   "name": "Rear position lamp",
+   "role": "Light function module producing rear position light.",
+   "material": "LED modules on PCB",
+   "electrical": true
+  },
+  {
+   "name": "Stop lamp",
+   "role": "Light function module producing braking indication light.",
+   "material": "LED modules on PCB",
+   "electrical": true
+  },
+  {
+   "name": "Reversing lamp",
+   "role": "Light function module producing white reversing light.",
+   "material": "LED modules on PCB",
+   "electrical": true
+  },
+  {
+   "name": "Reflector surface (LED reflector cups / reversing reflector)",
+   "role": "Collects and directs the LED light output; the drawing shows an array of 24 cup reflectors and a faceted reflector in the reversing compartment.",
+   "material": "PC with aluminium vacuum-metallised coating",
+   "electrical": false
+  },
+  {
+   "name": "Retro-reflector",
+   "role": "Passive reflective device for conspicuity.",
+   "material": "PMMA (moulded prism optics)",
+   "electrical": false
+  },
+  {
+   "name": "Outer lens",
+   "role": "Closes the housing, defines the emitted colour and protects the internals.",
+   "material": "PMMA (red-tinted, UV-stabilised)",
+   "electrical": false
+  },
+  {
+   "name": "Reversing lamp window/insert in outer lens",
+   "role": "Separately framed, vertically fluted optical area of the lens positioned over the reversing compartment.",
+   "material": "",
+   "electrical": false
+  },
+  {
+   "name": "Seal / gasket",
+   "role": "Seals the lens to the housing against water and dust ingress.",
+   "material": "TPE or silicone",
+   "electrical": false
+  },
+  {
+   "name": "Fasteners / clips",
+   "role": "Retain the lamp to the vehicle body and/or hold the internal assemblies.",
+   "material": "PA, POM, or steel",
+   "electrical": false
+  }
+ ],
+ "electronics": [
+  "LED light sources mounted on PCB(s) for the rear position, stop and reversing functions",
+  "Drawing: a 3 x 8 array of LED reflector cups (24 positions)",
+  "Drawing: a row of 8 small circular elements above the cup array, possibly additional LEDs",
+  "Drawing: a round light-source element at the top of the reversing compartment",
+  "Internal wiring and electrical connector to the vehicle harness (implied; not shown)"
+ ],
+ "vehicle_interfaces": [
+  "Mechanical attachment to the rear body panel/aperture via fasteners or clips",
+  "Electrical connection to the vehicle wiring harness to receive switched signals: position/tail lamp, brake signal and reverse gear signal",
+  "Outer lens surface flush with the rear body styling; seal against the body or housing"
+ ],
+ "drawing_observations": [
+  "Upper view shows the housing interior with the lens removed; lower view shows the outer lens.",
+  "Left section contains three horizontal rows of 8 metallised reflector cups (24 total), arranged in stepped tiers.",
+  "A row of 8 small circular features in individual partitioned cells sits above the cup rows; these may be LEDs, light-guide inputs or screw bosses.",
+  "A blank rectangular compartment in the centre of the housing may house the retro-reflector or another optical element.",
+  "An elongated, tapered recessed channel along the upper edge of the housing has no evident light source in it.",
+  "Right-lower section has a separate square compartment with a curved faceted (multi-segment) reflector and a semicircular light-source element at the top, consistent with the reversing lamp.",
+  "The outer lens has a distinct, separately bordered rectangular insert with vertical flutes at its lower right, aligned with the reversing compartment.",
+  "The diagonal hatch lines on the lens indicate a smooth transparent surface.",
+  "The drawing shows no PCB, connector, seal, fasteners or mounting points."
+ ],
+ "uncertainties": [
+  "The spec labels the material table as representative values to be confirmed against the actual bill of materials.",
+  "The outer lens is specified as red-tinted, yet the reversing lamp must emit white light; the colour of the fluted reversing window (assumed clear) is not stated.",
+  "The location of the retro-reflector in the assembly is not identifiable from the drawing (it could be the central rectangular compartment or a lens-integrated area).",
+  "The assignment of the cup rows and small circular elements to the position and stop functions is not specified; the two functions may share the same LEDs at different intensities.",
+  "The function of the elongated upper channel is unclear; it may be a light guide or a purely styling feature.",
+  "The number of LEDs, the PCB layout, the connector type and the operating voltage are not specified.",
+  "The mounting method, the fastening points and the vehicle side (left or right) are not specified."
+ ]
+}

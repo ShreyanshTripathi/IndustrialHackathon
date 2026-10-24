@@ -12,7 +12,7 @@ Scores and experiments so far on the worked example `dev-rear-lamp` (190 expecte
 | Pages | 71.4% | 94.3% | 81.3% | |
 | Regulations | 100% | 100% | 100% | |
 
-It has 311 requirements and passes `tools/validate.py`. The other uploads were v1 (0.568), v2 (0.499), v5 (0.625) and v6a (0.607), all kept in `out/uploads/`.
+It has 311 requirements and passes `tools/validate.py`. The other uploads were v1 (0.568), v2 (0.499), v5 (0.625), v6a (0.607) and v9 (0.630, a tie with fewer requirements), all kept in `out/uploads/`.
 
 ## All runs
 
@@ -33,6 +33,7 @@ Requirement-level scores come from our own judge (`eval/judge.py`), except where
 | **v6b (best)** | `out/uploads/dev-rear-lamp_v6b_F2-0.630.json` | v5 with duplicate threshold 93% instead of 97% | 311 | 136 | 0.635 | **0.630** (P 43.4%, R 71.1%; pages 71.4% / 94.3%) |
 | v7 | `out/dev-rear-lamp/v7_new_drawing.json` | full fresh run on the new labelled drawing | 360 | 122 | 0.545 | — |
 | v8 | `out/dev-rear-lamp/v8_union2_dedup93.json` | v5 and v7 combined, duplicates removed at 93% | 508 | 136 | 0.536 | — |
+| v9 | `out/uploads/dev-rear-lamp_v9_F2-0.630.json` | scope fix: regulation's full scope kept (categories, device and colour lists, exceptions); fresh run on the new drawing | 295 | 141 | **0.668** | **0.630** (P 45.1%, R 70.0%; pages 69.3% / 98.1%) |
 | offline test | `out/dev-rear-lamp/offline_test.json` | v1b, rerun from saved stages with 0 API calls | 421 | 144 | 0.610 | — |
 
 Next to each file, `<name>.judge.json` lists the matched pairs, the misses and the extras.
@@ -68,6 +69,7 @@ There's no expected answer for this case; the selection is a judgement call.
 | **current** (scope, condition and numbers must agree) | 143 / 146 | 0.601 / 0.614 | +3–4 F2 points |
 
 - **Noise:** two fresh runs on the same file differ by about ±3 matches.
+- **Sixth upload (v9, 24 Oct 19:16):** platform 0.630 against 0.668 from our judge, an offset of 3.8 points (≈133 matched on the platform against 141 on ours). It ties v6b: precision is up (45.1% vs 43.4%) and recall is down (70.0% vs 71.1%).
 - **Fifth upload (v6b):** platform 0.630 against 0.635 from our judge. Duplicates at 93% beat 97%, so 93 is the new default.
 - **Fourth upload (v6a):** platform 0.607 against 0.612 from our judge. Cut-off 30 loses more recall than it gains in precision, so 20 stays the default.
 - **Run-to-run variance:** a full fresh run on the new drawing (v7) matched 122 against 144 for v1b. The missed obligations are spread across all regulations (27 lost, 5 gained): the extractor emits a different subset each run. Combining two runs (v8) doesn't help, because their wordings differ too much for duplicate removal to merge them.
@@ -84,6 +86,14 @@ There's no expected answer for this case; the selection is a judgement call.
 - **Duplicate removal** (`verify.dedup`, ≥ 97% similar within a regulation): +0.013 F2, costs at most 1 match.
 - **Retrieved style examples + parent context in the extractor (v4):** 141 matches against 143–146 for v1, so no gain. Turned off (`extract.STYLE_EXAMPLES = False`).
 - **Plateau:** every extractor variant (v1–v4) reaches 140–148 matches before filtering. A perfect paragraph filter would give 0.714 on our judge (~0.67 on the platform). The ranker gets about a tenth of that gap.
+
+## Scope narrowing (v9)
+
+- **Diagnosis:** the extractor narrowed the regulation's scope to the product ("M1 and N1" → "M1", "red, amber or white" → "red", S3/S4 dropped, a logo rule split per lamp). The graph text and the section choice were complete. The cause was the extractor prompt ("skip vehicle categories this product does not have", "split per lamp function"), helped by the profile keeping only `M1` and dropping the spec's "apply across M and N categories".
+- **The judge allows a narrower subject but not a narrower condition:** expert requirements with a generic subject matched 14 of 19 even when we named our lamp. Requirements with vehicle categories matched only 1 of 5.
+- **Fix:** the extractor keeps every category, device list, colour list and exception, and keeps a broader subject whole. The profile has a new `regulatory_scope` field. The section selector and critic skip only what is *only* about other products.
+- **Result (our judge):** of the 8 targeted paragraphs, 6 expert requirements newly matched and 1 was lost. Vehicle-category cases went from 1/5 to 3/5. Total matches 141 (v1b 144), with 295 requirements instead of 311.
+- **Platform:** 0.630, the same as v6b. The targeted cases improved, but run-to-run variance elsewhere cancelled the gain. Still missed: R48 6.4.4.2 (off-road exception) and 6.10.7.
 
 ## What we learned
 
