@@ -48,6 +48,7 @@ class Paragraph:
     page_end: int
     section: str  # nearest heading title, e.g. "Annex 3 Standard light distributions"
     text: str = ""
+    boxes: list[dict] = field(default_factory=list, repr=False)  # [{"page": 46, "bbox": [x0, y0, x1, y1]}] per line, PDF points
     lines: list[str] = field(default_factory=list, repr=False)
 
 
@@ -119,6 +120,7 @@ def parse_pdf(path: Path, role: str) -> list[Paragraph]:
                     continue
                 text = " ".join("".join(s["text"] for s in spans).split())
                 font, size = spans[0]["font"], spans[0]["size"]
+                box = {"page": page_no, "bbox": [round(v, 1) for v in line["bbox"]]}
 
                 if PAGE_HEADER.match(text):
                     continue
@@ -132,6 +134,7 @@ def parse_pdf(path: Path, role: str) -> list[Paragraph]:
                             and not APPENDIX.match(text):
                         section += " " + text  # wrapped heading title
                         cur.section = section
+                        cur.boxes.append(box)
                         continue
                     in_heading = True
                     if m := ANNEX.match(text):
@@ -139,7 +142,8 @@ def parse_pdf(path: Path, role: str) -> list[Paragraph]:
                         part, prev_num, section = None, None, text
                         start(None, page_no, "")
                     elif m := APPENDIX.match(text):
-                        base = annex.split(" Appendix")[0] if annex else None
+                        # an appendix inside an annex keeps the annex; one after a top-level appendix does not
+                        base = annex.split(" Appendix")[0] if annex and not annex.startswith("Appendix") else None
                         annex = f"{base} Appendix {m[1]}" if base else f"Appendix {m[1]}"
                         part, prev_num, section = None, None, text
                         start(None, page_no, "")
@@ -149,12 +153,14 @@ def parse_pdf(path: Path, role: str) -> list[Paragraph]:
                     else:
                         section = text
                         start(None, page_no, "")
+                    cur.boxes.append(box)
                     continue
                 in_heading = False
 
                 if font.startswith("Times") and "Bold" in font and (m := PART.match(text)) and annex:
                     part, prev_num, section = f"Part {m[1]}", None, f"{annex} {text}"
                     start(None, page_no, text)
+                    cur.boxes.append(box)
                     continue
 
                 m = NUMBERED.match(text)
@@ -163,6 +169,7 @@ def parse_pdf(path: Path, role: str) -> list[Paragraph]:
                     if _is_successor(prev_num, num):
                         prev_num = num
                         start(m[1], page_no, m[2] or "")
+                        cur.boxes.append(box)
                         continue
 
                 if cur is None:
@@ -170,6 +177,7 @@ def parse_pdf(path: Path, role: str) -> list[Paragraph]:
                 else:
                     cur.lines.append(text)
                     cur.page_end = page_no
+                cur.boxes.append(box)
     flush()
     return out
 

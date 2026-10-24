@@ -40,7 +40,7 @@ def _stage(out: Path, name: str, resume: bool, compute):
     """Reuse out/<case>/<name> when resuming and it exists; otherwise compute and save it."""
     path = out / name
     if resume and path.is_file():
-        print(f"  (reused {path.relative_to(ROOT)})")
+        print(f"  (reused {path.relative_to(ROOT) if path.is_relative_to(ROOT) else path})")
         return json.loads(path.read_text())
     data = compute()
     _save(out, name, data)
@@ -64,6 +64,94 @@ def _eval_regulations(case_dir: Path, result: dict) -> None:
         print(f"    extra  {r}: {result['verdicts'][r]['reason']}")
 
 
+def _noop(stage: str, status: str, detail: str = "", counts: dict | None = None) -> None:
+    pass
+
+
+def execute(case_dir: Path, out: Path, *, resume: bool = False, team_id: str = "team-08",
+            stop_after: str = STAGES[-1], on_event=_noop, checks: bool = True) -> Path | None:
+    """Run the stages in order for one case folder, saving every intermediate result in `out`.
+
+    `on_event(stage, status, detail, counts)` is called as each stage starts ("running") and ends ("done"), so the
+    web app can show progress; the CLI ignores it. Returns the submission path, or None when stopped early.
+    """
+    case_dir = case_dir.resolve()
+
+    print("① product analyst")
+    on_event("profile", "running")
+    profile = ProductProfile.model_validate(
+        _stage(out, "01_profile.json", resume, lambda: analyse(case_dir).model_dump()))
+    print(f"  {profile.product_name}: {len(profile.functions)} functions, {len(profile.parts)} parts, "
+          f"electronics={profile.electronics}")
+    on_event("profile", "done", f"{profile.product_name}: {len(profile.functions)} functions, {len(profile.parts)} parts")
+    if stop_after == "profile":
+        return None
+
+    print("②③ regulation selection")
+    on_event("regulations", "running", "checking all 56 regulations")
+    g = Graph.load(DATA / "graph.json")
+    result = _stage(out, "02_regulations.json", resume, lambda: select(profile, g))
+    print(f"  selected: {result['selected']}")
+    print(f"  superseded: {result['superseded']}")
+    _eval_regulations(case_dir, result)
+    on_event("regulations", "done", ", ".join(result["selected"]), {"regulations": len(result["selected"])})
+    if stop_after == "regulations":
+        return None
+
+    print("④ section selectors")
+    on_event("sections", "running")
+    sections = _stage(out, "03_sections.json", resume, lambda: choose_all(profile, g, result))
+    for s in sections:
+        n = sum(len(u["paragraphs"]) for u in s["units"])
+        print(f"  {s['regulation']}: {len(s['units'])} units ({n} paragraphs) of {len(s['units']) + len(s['skipped'])}")
+    on_event("sections", "done", f"{sum(len(s['units']) for s in sections)} sections to read")
+    if stop_after == "sections":
+        return None
+
+    print("⑤ extractors")
+    on_event("extract", "running")
+    reqs = _stage(out, "04_requirements.json", resume, lambda: extract_all(profile, g, sections, case_dir.name))
+    print(f"  {len(reqs)} requirements: {dict(collections.Counter(r['source']['regulation'] for r in reqs))}")
+    on_event("extract", "done", f"{len(reqs)} candidate requirements")
+    if stop_after == "requirements":
+        return None
+
+    print("⑥ verifier and critic")
+    on_event("verify", "running")
+    reqs = _stage(out, "05_verified.json", resume, lambda: verify(profile, g, reqs))
+    print(f"  kinds: {dict(collections.Counter(r['kind'] for r in reqs))}")
+    print(f"  low traceability (<50% shared wording with source): {sum(r['trace'] < 50 for r in reqs)}")
+    reqs = kept(reqs)
+    print(f"  kept {len(reqs)} ({', '.join(sorted(KEEP))})")
+    on_event("verify", "done", f"{len(reqs)} kept after the critic")
+
+    print("⑥b paragraph ranker and de-duplication")
+    on_event("rank", "running")
+    reqs = _stage(out, "06_ranked.json", resume, lambda: rank(profile, g, reqs, case_dir.name))
+    n = len(reqs)
+    reqs = [r for r in reqs if r["para_score"] >= RANK_MIN]
+    print(f"  ranker: kept {len(reqs)} of {n} (paragraph score >= {RANK_MIN})")
+    n = len(reqs)
+    reqs = dedup(reqs)
+    print(f"  de-duplication: kept {len(reqs)} of {n}")
+    submission = {
+        "team_id": team_id,
+        "case_id": case_dir.name,
+        "requirements": [{"id": f"R-{i + 1:04d}", "text": r["text"], "source": r["source"],
+                          **({"test_case": r["test_case"]} if r["test_case"] else {})} for i, r in enumerate(reqs)],
+    }
+    sub_path = out / "submission.json"
+    _save(out, "submission.json", submission)
+    print(f"  wrote {sub_path}")
+    on_event("rank", "done", f"{len(reqs)} requirements", {"requirements": len(reqs)})
+    if checks:
+        subprocess.run([sys.executable, str(ROOT / "tools" / "validate.py"), str(sub_path)])
+        if (case_dir / "expected.json").is_file():
+            subprocess.run([sys.executable, str(ROOT / "tools" / "score_local.py"), str(sub_path),
+                            "--expected", str(case_dir / "expected.json")])
+    return sub_path
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("case_dir", type=Path)
@@ -72,71 +160,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--resume", action="store_true", help="reuse saved stage outputs in out/<case>/ where present")
     args = ap.parse_args(argv)
     case_dir = args.case_dir.resolve()
-    out = ROOT / "out" / case_dir.name
-
-    print("① product analyst")
-    profile = ProductProfile.model_validate(
-        _stage(out, "01_profile.json", args.resume, lambda: analyse(case_dir).model_dump()))
-    print(f"  {profile.product_name}: {len(profile.functions)} functions, {len(profile.parts)} parts, "
-          f"electronics={profile.electronics}")
-    if args.stop_after == "profile":
-        print(llm.summary())
-        return 0
-
-    print("②③ regulation selection")
-    g = Graph.load(DATA / "graph.json")
-    result = _stage(out, "02_regulations.json", args.resume, lambda: select(profile, g))
-    print(f"  selected: {result['selected']}")
-    print(f"  superseded: {result['superseded']}")
-    _eval_regulations(case_dir, result)
-    if args.stop_after == "regulations":
-        print(llm.summary())
-        return 0
-
-    print("④ section selectors")
-    sections = _stage(out, "03_sections.json", args.resume, lambda: choose_all(profile, g, result))
-    for s in sections:
-        n = sum(len(u["paragraphs"]) for u in s["units"])
-        print(f"  {s['regulation']}: {len(s['units'])} units ({n} paragraphs) of {len(s['units']) + len(s['skipped'])}")
-    if args.stop_after == "sections":
-        print(llm.summary())
-        return 0
-
-    print("⑤ extractors")
-    reqs = _stage(out, "04_requirements.json", args.resume, lambda: extract_all(profile, g, sections, case_dir.name))
-    print(f"  {len(reqs)} requirements: {dict(collections.Counter(r['source']['regulation'] for r in reqs))}")
-    if args.stop_after == "requirements":
-        print(llm.summary())
-        return 0
-
-    print("⑥ verifier and critic")
-    reqs = _stage(out, "05_verified.json", args.resume, lambda: verify(profile, g, reqs))
-    print(f"  kinds: {dict(collections.Counter(r['kind'] for r in reqs))}")
-    print(f"  low traceability (<50% shared wording with source): {sum(r['trace'] < 50 for r in reqs)}")
-    reqs = kept(reqs)
-    print(f"  kept {len(reqs)} ({', '.join(sorted(KEEP))})")
-
-    print("⑥b paragraph ranker and de-duplication")
-    reqs = _stage(out, "06_ranked.json", args.resume, lambda: rank(profile, g, reqs, case_dir.name))
-    n = len(reqs)
-    reqs = [r for r in reqs if r["para_score"] >= RANK_MIN]
-    print(f"  ranker: kept {len(reqs)} of {n} (paragraph score >= {RANK_MIN})")
-    n = len(reqs)
-    reqs = dedup(reqs)
-    print(f"  de-duplication: kept {len(reqs)} of {n}")
-    submission = {
-        "team_id": args.team_id,
-        "case_id": case_dir.name,
-        "requirements": [{"id": f"R-{i + 1:04d}", "text": r["text"], "source": r["source"],
-                          **({"test_case": r["test_case"]} if r["test_case"] else {})} for i, r in enumerate(reqs)],
-    }
-    sub_path = out / "submission.json"
-    _save(out, "submission.json", submission)
-    print(f"  wrote {sub_path.relative_to(ROOT)}")
-    subprocess.run([sys.executable, str(ROOT / "tools" / "validate.py"), str(sub_path)])
-    if (case_dir / "expected.json").is_file():
-        subprocess.run([sys.executable, str(ROOT / "tools" / "score_local.py"), str(sub_path),
-                        "--expected", str(case_dir / "expected.json")])
+    execute(case_dir, ROOT / "out" / case_dir.name, resume=args.resume, team_id=args.team_id, stop_after=args.stop_after)
     print(llm.summary())
     return 0
 

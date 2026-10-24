@@ -1,0 +1,37 @@
+# Flame on one Oracle Cloud Always Free Ampere VM: the app behind Caddy, which gets and renews the HTTPS
+# certificate by itself. Start from this folder: sudo docker compose up -d --build
+services:
+  app:
+    build:
+      context: ../..
+    restart: unless-stopped
+    env_file: flame.env              # API keys and the site password: never committed (see flame.env.example)
+    volumes:                         # the licensed data stays on the host, so scripts/purge.sh can delete it
+      - ../../data:/app/data         # corpus, graph, search index, LLM cache
+      - ../../out:/app/out           # runs and uploads
+      - ../../regulations:/app/regulations:ro
+      - ../../cases:/app/cases:ro    # expert examples the paragraph ranker uses
+      - ../../subgoal:/app/subgoal:ro
+    expose:
+      - "8000"
+    security_opt:
+      - no-new-privileges:true
+
+  caddy:
+    image: caddy:2.8
+    restart: unless-stopped
+    depends_on:
+      - app
+    env_file: flame.env              # DOMAIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  caddy-data:
+  caddy-config:

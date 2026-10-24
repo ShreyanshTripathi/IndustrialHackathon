@@ -1,0 +1,62 @@
+/* Flame design tokens: a Tesla-inspired, monochrome language with one action colour. */
+:root {
+  --ink: #171a20;
+  --ink-2: #393c41;
+  --ink-3: #5c5e62;
+  --ink-4: #6b6d71;
+  --ground: #f4f4f4;
+  --surface: #ffffff;
+  --surface-2: #fafafa;
+  --line: #e5e5e5;
+  --line-2: #d0d1d2;
+  --action: #3e6ae1;
+  --action-hover: #3457b1;
+  --action-ink: #ffffff;
+  --action-soft: rgba(62, 106, 225, 0.12);
+  --highlight: rgba(62, 106, 225, 0.2);
+
+  /* severity: one ramp that also changes in lightness, always shown with its number */
+  --sev-5: #b3261e;
+  --sev-4: #c2410c;
+  --sev-3: #8a6d00;
+  --sev-2: #5c5e62;
+  --sev-1: #6b6d71;
+  --sev-ink: #ffffff;
+
+  --radius: 4px;
+  --radius-lg: 8px;
+  --shadow-pop: 0 8px 28px rgba(23, 26, 32, 0.16);
+
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --t-12: 12px;
+  --t-14: 14px;
+  --t-16: 16px;
+  --t-20: 20px;
+  --t-28: 28px;
+  --t-40: 40px;
+  --t-64: 64px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --sidebar: 248px;
+}
+
+[data-theme="dark"] {
+  --ink: #ffffff;
+  --ink-2: #d0d1d2;
+  --ink-3: #a2a3a5;
+  --ink-4: #8e8e8e;
+  --ground: #000000;
+  --surface: #171a20;
+  --surface-2: #1f2228;
+  --line: #2a2d33;
+  --line-2: #393c41;
+  --action-soft: rgba(62, 106, 225, 0.22);
+  --sev-5: #ff6b5e;
+  --sev-4: #ff9a5c;
+  --sev-3: #e8c547;
+  --sev-2: #b4b6b9;
+  --sev-1: #8e8e8e;
+  --sev-ink: #000000;
+}

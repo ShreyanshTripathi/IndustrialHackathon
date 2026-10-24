@@ -9,3 +9,7 @@ CLAUDE.md
 Industrial Agents Hackathon Kick-Off.pdf
 certivity-agent/
 industrial-ai-hackathon/
+
+web/node_modules/
+web/dist/
+deploy/oracle/flame.env

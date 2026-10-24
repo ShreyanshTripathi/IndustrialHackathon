@@ -21,7 +21,12 @@ from pydantic import BaseModel
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / "data" / "llm_cache"
 MODEL = "claude-opus-5-5"
-PRICE = {"input": 4.00, "output": 20.00, "cache_read": 0.20, "cache_write": 5.00}  # $ per 1M tokens, Opus 5.5
+FAST_MODEL = "claude-sonnet-5-5"  # the voice/text assistant, where the first word must come quickly
+PRICES = {  # $ per 1M tokens
+    "claude-opus-5-5": {"input": 4.00, "output": 20.00, "cache_read": 0.20, "cache_write": 5.00},
+    "claude-sonnet-5-5": {"input": 2.00, "output": 10.00, "cache_read": 0.20, "cache_write": 2.50},
+}
+PRICE = PRICES[MODEL]
 
 load_dotenv(ROOT / ".env")
 if not os.environ.get("ANTHROPIC_API_KEY") and os.environ.get("CLAUDE_KEY"):
@@ -40,17 +45,23 @@ def _get_client() -> anthropic.Anthropic:
     return _client
 
 
-def _cost(usage) -> float:
-    return (usage.input_tokens * PRICE["input"] + usage.output_tokens * PRICE["output"]
-            + (usage.cache_read_input_tokens or 0) * PRICE["cache_read"]
-            + (usage.cache_creation_input_tokens or 0) * PRICE["cache_write"]) / 1e6
+def _cost(usage, model: str = MODEL) -> float:
+    price = PRICES.get(model, PRICE)
+    return (usage.input_tokens * price["input"] + usage.output_tokens * price["output"]
+            + (usage.cache_read_input_tokens or 0) * price["cache_read"]
+            + (usage.cache_creation_input_tokens or 0) * price["cache_write"]) / 1e6
+
+
+def available() -> bool:
+    """Whether model calls can be made (a key is configured and offline mode is off)."""
+    return bool(os.environ.get("ANTHROPIC_API_KEY")) and not os.environ.get("LLM_OFFLINE")
 
 
 def ask(schema: type[T], system: str, content: str | list, *, effort: str = "medium", max_tokens: int = 16000,
-        fresh: bool = False) -> T:
+        fresh: bool = False, model: str = MODEL) -> T:
     """Send one request and return the response parsed into `schema`."""
     messages = [{"role": "user", "content": content}]
-    key = hashlib.sha256(json.dumps([MODEL, system, messages, schema.model_json_schema(), effort],
+    key = hashlib.sha256(json.dumps([model, system, messages, schema.model_json_schema(), effort],
                                     sort_keys=True, default=str).encode()).hexdigest()
     path = CACHE / f"{key}.json"
     if path.is_file() and not fresh and not os.environ.get("LLM_FRESH"):
@@ -61,7 +72,7 @@ def ask(schema: type[T], system: str, content: str | list, *, effort: str = "med
         raise RuntimeError(f"LLM_OFFLINE is set and this {schema.__name__} request is not cached ({key[:12]})")
 
     response = _get_client().beta.messages.parse(
-        model=MODEL,
+        model=model,
         max_tokens=max_tokens,
         betas=["server-side-fallback-2026-07-01"],
         fallbacks="default",  # on a safety decline, the API re-runs the request on a fallback model
@@ -73,13 +84,68 @@ def ask(schema: type[T], system: str, content: str | list, *, effort: str = "med
     if response.stop_reason in ("refusal", "max_tokens"):
         raise RuntimeError(f"model stopped with {response.stop_reason} (request {response._request_id})")
     parsed = response.parsed_output
-    cost = _cost(response.usage)
+    cost = _cost(response.usage, model)
     with _lock:
         spent["calls"] += 1
         spent["usd"] += cost
     CACHE.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({"output": parsed.model_dump_json(), "usd": cost, "request_id": response._request_id}))
     return parsed
+
+
+def stream_text(system: str, messages: list[dict], *, model: str = FAST_MODEL, effort: str = "low",
+                max_tokens: int = 1024):
+    """Yield the text of one response as it is generated (not cached: questions rarely repeat word for word)."""
+    if not available():
+        raise RuntimeError("no ANTHROPIC_API_KEY configured (or LLM_OFFLINE is set)")
+    with _get_client().beta.messages.stream(
+        model=model,
+        max_tokens=max_tokens,
+        betas=["server-side-fallback-2026-07-01"],
+        fallbacks="default",
+        system=system,
+        messages=messages,
+        output_config={"effort": effort},
+    ) as stream:
+        for text in stream.text_stream:
+            yield text
+        final = stream.get_final_message()
+    with _lock:
+        spent["calls"] += 1
+        spent["usd"] += _cost(final.usage, model)
+
+
+def tool_loop(system: str, messages: list[dict], tools: list[dict], run_tool, *, model: str = MODEL,
+              effort: str = "low", max_rounds: int = 6, max_tokens: int = 4096):
+    """A plain tool-use loop: call the model, run the tools it asks for, repeat until it answers.
+
+    `run_tool(name, input) -> str` executes one tool. Returns (final_text, messages).
+    """
+    if not available():
+        raise RuntimeError("no ANTHROPIC_API_KEY configured (or LLM_OFFLINE is set)")
+    for _ in range(max_rounds):
+        response = _get_client().beta.messages.create(
+            model=model, max_tokens=max_tokens, system=system, messages=messages, tools=tools,
+            betas=["server-side-fallback-2026-07-01"], fallbacks="default", output_config={"effort": effort},
+        )
+        with _lock:
+            spent["calls"] += 1
+            spent["usd"] += _cost(response.usage, model)
+        if response.stop_reason == "refusal":
+            raise RuntimeError(f"model declined (request {response._request_id})")
+        messages = messages + [{"role": "assistant", "content": [b.model_dump(exclude_none=True) for b in response.content]}]
+        calls = [b for b in response.content if b.type == "tool_use"]
+        if not calls:
+            return "".join(b.text for b in response.content if b.type == "text"), messages
+        results = []
+        for call in calls:
+            try:
+                out, error = run_tool(call.name, call.input), False
+            except Exception as exc:  # report the failure to the model rather than crash the loop
+                out, error = f"tool failed: {exc}", True
+            results.append({"type": "tool_result", "tool_use_id": call.id, "content": out, "is_error": error})
+        messages = messages + [{"role": "user", "content": results}]
+    return "I could not finish answering within the tool budget; try a narrower question.", messages
 
 
 def summary() -> str:
