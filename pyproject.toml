@@ -1,0 +1,10 @@
+[project]
+name = "industrial-hackathon"
+version = "0.1.0"
+description = "Industrial Hackathon"
+readme = "README.md"
+authors = [
+    { name = "Arjit", email = "42977377+arjityadav@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
