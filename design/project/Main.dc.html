@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Navigate — step-free route</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@500;600&amp;display=swap">
+<style>
+body{margin:0;background:#050506}
+a{color:#9DB6FF}a:hover{color:#C6D5FF}
+</style>
+</helmet>
+<div style="min-height: 900px; box-sizing: border-box; padding: 16px; display: flex; flex-wrap: wrap; gap: 16px; background: #050506; color: #EDEDEF; font-family: Inter, system-ui, sans-serif; font-size: 15px; line-height: 1.45">
+
+  <aside style="flex: 1 1 360px; max-width: 420px; min-height: 868px; box-sizing: border-box; background: #111214; border-radius: 18px; display: flex; flex-direction: column; overflow: hidden">
+
+    <header style="padding: 22px 24px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-family: Montserrat, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #A3A5AC">Fertigung Ost 27</span>
+        <span style="font-family: Montserrat, sans-serif; font-size: 20px; font-weight: 500">Ask the building</span>
+      </div>
+      <button aria-label="Switch building" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid #2A2C31; background: #1A1B1F; color: #EDEDEF; display: flex; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 21v-6h6v6"></path></svg>
+      </button>
+    </header>
+
+    <div style="padding: 0 24px 16px">
+      <label for="ask" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Ask the building</label>
+      <div style="display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 6px 0 18px; border-radius: 26px; background: #1A1B1F; border: 1px solid #26282D">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A3A5AC" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <input id="ask" type="text" placeholder="Rooms, machines, people…" style="flex: 1; min-width: 0; background: transparent; border: 0; outline: none; color: #EDEDEF; font: inherit">
+        <button aria-label="Speak" style="width: 40px; height: 40px; border-radius: 20px; border: 0; background: #26282D; color: #EDEDEF; display: flex; align-items: center; justify-content: center; cursor: pointer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div style="flex: 1; overflow: auto; padding: 4px 24px 16px; display: flex; flex-direction: column; gap: 14px">
+
+      <div style="align-self: flex-end; max-width: 82%; background: #26282D; border-radius: 18px 18px 4px 18px; padding: 11px 15px">I use a wheelchair. Take me to the CNC mill.</div>
+
+      <div style="max-width: 92%; color: #D6D7DB">There are three CNC mills in Production zone H-A1. I picked <strong style="color: #EDEDEF; font-weight: 600">CNC mill H-A1-B</strong>, the nearest to you. Routes stay step-free from now on.</div>
+
+      <section aria-label="Route summary" style="background: #1A1B1F; border: 1px solid #26282D; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; gap: 12px">
+          <div style="display: flex; flex-direction: column; align-items: center; padding-top: 5px">
+            <span style="width: 10px; height: 10px; border-radius: 5px; background: {{accent}}"></span>
+            <span style="width: 2px; flex: 1; background: #3A3C42; margin: 4px 0"></span>
+            <span style="width: 10px; height: 10px; border-radius: 5px; border: 2px solid #EDEDEF; box-sizing: border-box"></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0">
+            <div>
+              <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B8D94">From</div>
+              <div>Main entrance · Ground floor</div>
+            </div>
+            <div>
+              <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B8D94">To</div>
+              <div>CNC mill H-A1-B · Production zone H-A1</div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+          <span style="display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; border-radius: 14px; background: #1E2A4A; color: #C6D5FF; font-size: 13px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"></circle><path d="M10 8h4l-1 6h4l2 6"></path><path d="M9.5 11.5a5 5 0 1 0 6 7"></path></svg>
+            Step-free
+          </span>
+          <span style="margin-left: auto; font-family: Montserrat, sans-serif; font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums">118 m</span>
+          <span style="color: #A3A5AC">≈ 2 min</span>
+        </div>
+      </section>
+
+      <ol aria-label="Directions" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+        <li style="display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #1F2125">
+          <span style="width: 36px; height: 36px; flex: none; border-radius: 10px; background: #1A1B1F; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EDEDEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V4"></path><path d="M6 10l6-6 6 6"></path></svg></span>
+          <div style="flex: 1; min-width: 0">Go straight along <strong style="font-weight: 600">Office corridor 0.16</strong></div>
+          <span style="color: #A3A5AC; font-variant-numeric: tabular-nums">33 m</span>
+        </li>
+        <li style="display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #1F2125">
+          <span style="width: 36px; height: 36px; flex: none; border-radius: 10px; background: #1A1B1F; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EDEDEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20v-8a3 3 0 0 0-3-3H5"></path><path d="M9 5L5 9l4 4"></path></svg></span>
+          <div style="flex: 1; min-width: 0">Turn left through <strong style="font-weight: 600">Hall access 0.19</strong> into the hall</div>
+          <span style="color: #A3A5AC; font-variant-numeric: tabular-nums">12 m</span>
+        </li>
+        <li style="display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #1F2125">
+          <span style="width: 36px; height: 36px; flex: none; border-radius: 10px; background: #1A1B1F; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EDEDEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12H4"></path><path d="M10 6l-6 6 6 6"></path></svg></span>
+          <div style="flex: 1; min-width: 0">Follow the main aisle west, past the <strong style="font-weight: 600">conveyor</strong></div>
+          <span style="color: #A3A5AC; font-variant-numeric: tabular-nums">61 m</span>
+        </li>
+        <li style="display: flex; gap: 14px; align-items: flex-start; padding: 12px 0">
+          <span style="width: 36px; height: 36px; flex: none; border-radius: 10px; background: #EDEDEF; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111214" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.4-6-10a6 6 0 0 1 12 0c0 4.6-6 10-6 10z"></path><circle cx="12" cy="11" r="2"></circle></svg></span>
+          <div style="flex: 1; min-width: 0">Turn right into <strong style="font-weight: 600">Production zone H-A1</strong>. The mill is straight ahead</div>
+          <span style="color: #A3A5AC; font-variant-numeric: tabular-nums">12 m</span>
+        </li>
+      </ol>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <button style="height: 36px; padding: 0 14px; border-radius: 18px; border: 1px solid #2A2C31; background: transparent; color: #D6D7DB; font: inherit; font-size: 13px; cursor: pointer">Show the other mills</button>
+        <button style="height: 36px; padding: 0 14px; border-radius: 18px; border: 1px solid #2A2C31; background: transparent; color: #D6D7DB; font: inherit; font-size: 13px; cursor: pointer">Send to my phone</button>
+        <button style="height: 36px; padding: 0 14px; border-radius: 18px; border: 1px solid #2A2C31; background: transparent; color: #D6D7DB; font: inherit; font-size: 13px; cursor: pointer">Avoid the hall</button>
+      </div>
+    </div>
+
+    <footer style="padding: 14px 24px 22px; border-top: 1px solid #1F2125; display: flex; align-items: center; gap: 12px">
+      <span style="width: 8px; height: 8px; border-radius: 4px; background: #3FBF7F"></span>
+      <span style="font-size: 13px; color: #A3A5AC">Remembering: step-free · you are at Main entrance</span>
+    </footer>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; min-height: 640px; position: relative; border-radius: 18px; overflow: hidden; background: #0B0C0E">
+
+    <svg viewBox="0 0 1000 620" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Ground floor plan of Fertigung Ost 27 with a step-free route from the main entrance to CNC mill H-A1-B" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; padding: 96px 88px 112px 40px; box-sizing: border-box">
+      <g font-family="Inter, sans-serif" font-size="10.5" fill="#8B8D94">
+        <g fill="#15161A" stroke="#2B2D33" stroke-width="1.5">
+          <rect x="20" y="20" width="140" height="200"></rect>
+          <rect x="160" y="20" width="140" height="200"></rect>
+          <rect x="300" y="20" width="130" height="200"></rect>
+          <rect x="430" y="20" width="140" height="200"></rect>
+          <rect x="570" y="20" width="130" height="200"></rect>
+          <rect x="20" y="280" width="140" height="300"></rect>
+          <rect x="160" y="280" width="140" height="300"></rect>
+          <rect x="300" y="280" width="130" height="300"></rect>
+          <rect x="430" y="280" width="140" height="300"></rect>
+          <rect x="570" y="280" width="130" height="300"></rect>
+        </g>
+        <rect x="20" y="220" width="680" height="60" fill="#1D1F24" stroke="#2B2D33" stroke-width="1.5"></rect>
+        <g stroke="#2B2D33" stroke-width="1" stroke-dasharray="3 4"><path d="M160 222v56M300 222v56M430 222v56M570 222v56"></path></g>
+        <g fill="#18191D" stroke="#2B2D33" stroke-width="1.5">
+          <rect x="710" y="20" width="90" height="70"></rect>
+          <rect x="710" y="90" width="90" height="70"></rect>
+          <rect x="710" y="160" width="90" height="70"></rect>
+          <rect x="710" y="270" width="90" height="50"></rect>
+          <rect x="710" y="320" width="90" height="40"></rect>
+          <rect x="710" y="360" width="90" height="80"></rect>
+          <rect x="710" y="440" width="90" height="70"></rect>
+          <rect x="710" y="510" width="90" height="70"></rect>
+          <rect x="840" y="20" width="140" height="80"></rect>
+          <rect x="840" y="100" width="140" height="80"></rect>
+          <rect x="840" y="180" width="140" height="70"></rect>
+          <rect x="840" y="250" width="140" height="70"></rect>
+          <rect x="840" y="320" width="140" height="80"></rect>
+          <rect x="840" y="400" width="140" height="70"></rect>
+          <rect x="840" y="470" width="140" height="110"></rect>
+        </g>
+        <rect x="800" y="20" width="40" height="560" fill="#1D1F24" stroke="#2B2D33" stroke-width="1.5"></rect>
+        <rect x="700" y="230" width="100" height="40" fill="#1D1F24" stroke="#2B2D33" stroke-width="1.5"></rect>
+        <path d="M712 272l86 46M712 318l86-46" stroke="#2B2D33" stroke-width="1"></path>
+
+        <g fill="#24262B">
+          <rect x="38" y="70" width="30" height="24" rx="2"></rect>
+          <rect x="112" y="70" width="30" height="24" rx="2"></rect>
+          <circle cx="50" cy="185" r="8"></circle>
+          <rect x="175" y="112" width="110" height="12" rx="2"></rect>
+          <rect x="185" y="150" width="34" height="22" rx="2"></rect>
+          <rect x="240" y="150" width="34" height="22" rx="2"></rect>
+          <rect x="318" y="66" width="22" height="22" rx="2"></rect>
+          <rect x="356" y="66" width="22" height="22" rx="2"></rect>
+          <rect x="318" y="112" width="22" height="22" rx="2"></rect>
+          <rect x="356" y="112" width="22" height="22" rx="2"></rect>
+          <rect x="396" y="150" width="24" height="44" rx="2"></rect>
+          <rect x="448" y="58" width="44" height="28" rx="2"></rect>
+          <rect x="448" y="104" width="44" height="28" rx="2"></rect>
+          <rect x="448" y="150" width="44" height="28" rx="2"></rect>
+          <rect x="512" y="62" width="40" height="50" rx="2"></rect>
+          <circle cx="532" cy="160" r="8"></circle>
+          <circle cx="552" cy="192" r="8"></circle>
+          <rect x="585" y="64" width="100" height="8"></rect>
+          <rect x="585" y="100" width="100" height="8"></rect>
+          <rect x="585" y="136" width="100" height="8"></rect>
+          <rect x="585" y="172" width="100" height="8"></rect>
+          <rect x="45" y="318" width="10" height="230"></rect>
+          <rect x="85" y="318" width="10" height="230"></rect>
+          <rect x="125" y="318" width="10" height="230"></rect>
+          <rect x="185" y="318" width="10" height="230"></rect>
+          <rect x="225" y="318" width="10" height="230"></rect>
+          <rect x="265" y="318" width="10" height="230"></rect>
+          <rect x="322" y="318" width="10" height="230"></rect>
+          <rect x="362" y="318" width="10" height="230"></rect>
+          <rect x="402" y="318" width="10" height="230"></rect>
+          <rect x="455" y="318" width="10" height="230"></rect>
+          <rect x="495" y="318" width="10" height="230"></rect>
+          <rect x="535" y="318" width="10" height="230"></rect>
+          <rect x="590" y="330" width="18" height="28" rx="4"></rect>
+          <rect x="625" y="330" width="18" height="28" rx="4"></rect>
+          <rect x="595" y="420" width="26" height="26"></rect>
+          <rect x="635" y="420" width="26" height="26"></rect>
+          <rect x="595" y="470" width="26" height="26"></rect>
+        </g>
+        <rect x="590" y="576" width="30" height="8" fill="#3A3C42"></rect>
+        <rect x="650" y="576" width="30" height="8" fill="#3A3C42"></rect>
+
+        <text x="30" y="38" fill="#C9CACF" font-weight="600">H-A1</text><text x="30" y="52">Production</text>
+        <text x="170" y="38" fill="#C9CACF" font-weight="600">H-A2</text><text x="170" y="52">Assembly</text>
+        <text x="310" y="38" fill="#C9CACF" font-weight="600">H-A3</text><text x="310" y="52">Additive</text>
+        <text x="440" y="38" fill="#C9CACF" font-weight="600">H-A4</text><text x="440" y="52">Production</text>
+        <text x="580" y="38" fill="#C9CACF" font-weight="600">H-A5</text><text x="580" y="52">Warehouse</text>
+        <text x="30" y="298" fill="#C9CACF" font-weight="600">H-C1</text><text x="30" y="312">Warehouse</text>
+        <text x="170" y="298" fill="#C9CACF" font-weight="600">H-C2</text><text x="170" y="312">Warehouse</text>
+        <text x="310" y="298" fill="#C9CACF" font-weight="600">H-C3</text><text x="310" y="312">Warehouse</text>
+        <text x="440" y="298" fill="#C9CACF" font-weight="600">H-C4</text><text x="440" y="312">Warehouse</text>
+        <text x="580" y="298" fill="#C9CACF" font-weight="600">H-C5</text><text x="580" y="312">Logistics</text>
+        <text x="360" y="242" text-anchor="middle" letter-spacing="0.12em">MAIN AISLE</text>
+        <text x="755" y="58" text-anchor="middle">Meeting 0.20</text>
+        <text x="755" y="128" text-anchor="middle">Quality lab 0.21</text>
+        <text x="755" y="198" text-anchor="middle">Toilet 0.22</text>
+        <text x="755" y="300" text-anchor="middle">Stairs 0.17</text>
+        <text x="755" y="344" text-anchor="middle">Lift 0.18</text>
+        <text x="755" y="403" text-anchor="middle">Office 0.23</text>
+        <text x="755" y="478" text-anchor="middle">Meeting 0.24</text>
+        <text x="755" y="548" text-anchor="middle">Office 0.25</text>
+        <text x="910" y="63" text-anchor="middle">Office 0.26</text>
+        <text x="910" y="143" text-anchor="middle">Meeting room 0.27</text>
+        <text x="910" y="218" text-anchor="middle">Kitchen 0.28</text>
+        <text x="910" y="288" text-anchor="middle">Server room 0.29</text>
+        <text x="910" y="363" text-anchor="middle">Office 0.30</text>
+        <text x="910" y="438" text-anchor="middle">Kitchen 0.31</text>
+        <text x="910" y="528" text-anchor="middle">Office 0.32</text>
+        <text x="605" y="602" text-anchor="middle">Dock A</text>
+        <text x="665" y="602" text-anchor="middle">Dock B</text>
+        <text x="820" y="612" text-anchor="middle" fill="#C9CACF">Main entrance</text>
+
+        <polyline points="820,592 820,250 700,250 103,250 103,222 103,170" fill="none" stroke="{{accent}}" stroke-opacity="0.22" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"></polyline>
+        <polyline points="820,592 820,250 700,250 103,250 103,222 103,170" fill="none" stroke="{{accent}}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"></polyline>
+        <rect x="88" y="140" width="30" height="24" rx="3" fill="#EDEDEF"></rect>
+        <text x="124" y="148" fill="#EDEDEF" font-weight="600" font-size="11">CNC mill</text>
+        <text x="124" y="161" fill="#EDEDEF" font-size="11">H-A1-B</text>
+        <circle cx="820" cy="586" r="16" fill="{{accent}}" fill-opacity="0.2"></circle>
+        <circle cx="820" cy="586" r="7" fill="{{accent}}" stroke="#EDEDEF" stroke-width="2.5"></circle>
+      </g>
+    </svg>
+
+    <div style="position: absolute; left: 28px; top: 24px; display: flex; flex-direction: column; gap: 4px">
+      <span style="font-family: Montserrat, sans-serif; font-size: 30px; font-weight: 500; letter-spacing: -0.01em">Ground floor</span>
+      <span style="color: #A3A5AC">Fertigung Ost 27 · factory and office block</span>
+    </div>
+
+    <div role="group" aria-label="View" style="position: absolute; right: 24px; top: 24px; display: flex; padding: 4px; border-radius: 22px; background: #16171A; border: 1px solid #26282D">
+      <button aria-pressed="true" style="height: 36px; min-width: 52px; border-radius: 18px; border: 0; background: #EDEDEF; color: #111214; font: inherit; font-weight: 600; font-size: 13px; cursor: pointer">2D</button>
+      <button aria-pressed="false" style="height: 36px; min-width: 52px; border-radius: 18px; border: 0; background: transparent; color: #D6D7DB; font: inherit; font-size: 13px; cursor: pointer">3D</button>
+    </div>
+
+    <div style="position: absolute; right: 24px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; align-items: center">
+      <div role="group" aria-label="Floor" style="display: flex; flex-direction: column; gap: 6px; padding: 6px; border-radius: 26px; background: #16171A; border: 1px solid #26282D">
+        <button aria-label="Floor 1" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: transparent; color: #D6D7DB; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 500; cursor: pointer">1</button>
+        <button aria-label="Ground floor, current" aria-pressed="true" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: #EDEDEF; color: #111214; font-family: Montserrat, sans-serif; font-size: 15px; font-weight: 600; cursor: pointer">G</button>
+      </div>
+      <div style="display: flex; flex-direction: column; border-radius: 22px; background: #16171A; border: 1px solid #26282D; overflow: hidden">
+        <button aria-label="Zoom in" style="width: 44px; height: 44px; border: 0; background: transparent; color: #EDEDEF; font-size: 20px; cursor: pointer">+</button>
+        <button aria-label="Zoom out" style="width: 44px; height: 44px; border: 0; border-top: 1px solid #26282D; background: transparent; color: #EDEDEF; font-size: 20px; cursor: pointer">−</button>
+      </div>
+      <button aria-label="Centre on me" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid #26282D; background: #16171A; color: #EDEDEF; display: flex; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 2l7 19-7-4-7 4z"></path></svg>
+      </button>
+    </div>
+
+    <div style="position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); width: min(560px, calc(100% - 48px)); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 12px 12px 12px 24px; border-radius: 28px; background: rgba(22, 23, 26, 0.92); border: 1px solid #26282D">
+      <div style="display: flex; flex-direction: column">
+        <span style="font-family: Montserrat, sans-serif; font-size: 22px; font-weight: 500; font-variant-numeric: tabular-nums">118 m · 2 min</span>
+        <span style="font-size: 13px; color: #A3A5AC">Step-free · via Hall access 0.19</span>
+      </div>
+      <div style="margin-left: auto; display: flex; gap: 8px">
+        <button style="height: 48px; padding: 0 20px; border-radius: 24px; border: 1px solid #33353B; background: transparent; color: #EDEDEF; font: inherit; font-weight: 500; cursor: pointer">Cancel</button>
+        <button style="height: 48px; padding: 0 26px; border-radius: 24px; border: 0; background: {{accent}}; color: #FFFFFF; font: inherit; font-weight: 600; cursor: pointer">Start guidance</button>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#3E6AE1","options":["#3E6AE1","#2B9C8A","#C9CACF"]},"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#3E6AE1' };
+}
+}
+</script>
+</body>
+</html>
