@@ -3,3 +3,7 @@ industrial-agents-hackathon-2026/
 regulations
 project_detail/
 .DS_Store
+data/
+out/
+__pycache__/
+CLAUDE.md
