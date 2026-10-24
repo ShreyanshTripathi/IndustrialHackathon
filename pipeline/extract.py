@@ -11,11 +11,19 @@ from concurrent.futures import ThreadPoolExecutor
 
 from pydantic import BaseModel, Field
 
+from pipeline.examples import retrieve
 from pipeline.graph import Graph
 from pipeline.llm import ask
 from pipeline.profile import ProductProfile
 
 CHUNK_CHARS = 12000
+# v4 (retrieved expert examples + parent context) matched 141 vs v1's 143-146 on dev: no gain, so off by default
+STYLE_EXAMPLES = False
+
+
+EXAMPLES_RULE = """- <expert_examples> shows how the experts wrote requirements from similar paragraphs of other regulations:
+  match their granularity (how many requirements per paragraph) and their wording.
+"""
 
 
 class Extracted(BaseModel):
@@ -84,15 +92,38 @@ def _profile_brief(profile: ProductProfile) -> str:
             f"Electronics: {'; '.join(profile.electronics) or 'none'}")
 
 
-def extract_chunk(profile: ProductProfile, g: Graph, regulation: str, unit: dict, pids: list[str]) -> list[dict]:
+def _line(g: Graph, ref: str, pid: str, in_chunk: set[str]) -> str:
+    """One paragraph, with its parent's text when the parent is not in the chunk: the subject and condition of
+    table rows and sub-items ("6.10.4.2 Where optional lamps are installed ...") often sit in the parent."""
+    n = g.nodes[pid]
+    par = [p for p in g.out(pid, "CHILD_OF") if p not in in_chunk]
+    ctx = f" (under {g.nodes[par[0]]['label']}: {g.nodes[par[0]]['text'][:200]})" if par else ""
+    return f"[{ref}] {n['label']}{ctx}: {n['text']}"
+
+
+def _style_examples(g: Graph, texts: list[str], case: str, regulation: str) -> list[str]:
+    listed, _ = retrieve(g, texts, case, regulation, k_listed=5, k_unlisted=0)
+    return [f"Paragraph [{e.regulation} {e.label}]: {e.text[:300]}\n" + "\n".join(f"  -> {t[:300]}" for t in e.requirements[:4])
+            for e in listed]
+
+
+def extract_chunk(profile: ProductProfile, g: Graph, case: str, regulation: str, unit: dict, pids: list[str]
+                  ) -> list[dict]:
     refs = {f"P{i + 1}": pid for i, pid in enumerate(pids)}
-    body = "\n".join(f"[{ref}] {g.nodes[pid]['label']}: {g.nodes[pid]['text']}" for ref, pid in refs.items())
+    if STYLE_EXAMPLES:
+        body = "\n".join(_line(g, ref, pid, set(pids)) for ref, pid in refs.items())
+        examples = _style_examples(g, [g.nodes[p]["text"] for p in pids], case, regulation)
+        system = SYSTEM.replace("Examples of the expected style:", EXAMPLES_RULE + "\nExamples of the expected style:")
+    else:
+        body = "\n".join(f"[{ref}] {g.nodes[pid]['label']}: {g.nodes[pid]['text']}" for ref, pid in refs.items())
+        examples, system = [], SYSTEM
     defs = _definitions(g, pids)
     content = (f"<product>\n{_profile_brief(profile)}\n</product>\n\n"
-               f"<regulation>{regulation}, section {unit['key']}: {unit['title']}</regulation>\n\n"
+               + (f"<expert_examples>\n" + "\n".join(examples) + "\n</expert_examples>\n\n" if examples else "")
+               + f"<regulation>{regulation}, section {unit['key']}: {unit['title']}</regulation>\n\n"
                + (f"<definitions>\n" + "\n".join(defs) + "\n</definitions>\n\n" if defs else "")
                + f"<paragraphs>\n{body}\n</paragraphs>\n\nExtract the requirements.")
-    result = ask(Extraction, SYSTEM, content, effort="medium")
+    result = ask(Extraction, system, content, effort="medium")
     out = []
     for r in result.requirements:
         pid = refs.get(r.paragraph.strip("[] "))
@@ -105,8 +136,8 @@ def extract_chunk(profile: ProductProfile, g: Graph, regulation: str, unit: dict
     return out
 
 
-def extract_all(profile: ProductProfile, g: Graph, sections: list[dict], workers: int = 8) -> list[dict]:
+def extract_all(profile: ProductProfile, g: Graph, sections: list[dict], case: str, workers: int = 8) -> list[dict]:
     jobs = [(s["regulation"], u, chunk) for s in sections for u in s["units"] for chunk in _chunks(g, u["paragraphs"])]
     with ThreadPoolExecutor(workers) as pool:
-        results = pool.map(lambda j: extract_chunk(profile, g, *j), jobs)
+        results = pool.map(lambda j: extract_chunk(profile, g, case, *j), jobs)
     return [r for batch in results for r in batch]

@@ -87,3 +87,18 @@ def verify(profile: ProductProfile, g: Graph, reqs: list[dict], group_size: int 
 
 def kept(reqs: list[dict]) -> list[dict]:
     return [r for r in reqs if r.get("kind", "product_requirement") in KEEP]
+
+
+DEDUP_MIN = 93  # same requirement twice within one regulation; platform: 93 -> F2 0.630 vs 97 -> 0.625 (dev)
+
+
+def dedup(reqs: list[dict]) -> list[dict]:
+    """Drop near-identical requirements, keeping the one on the higher-ranked paragraph; document order kept."""
+    norm = [" ".join(r["text"].lower().split()) for r in reqs]
+    order = sorted(range(len(reqs)), key=lambda i: (-reqs[i].get("para_score", 50), i))
+    kept: list[int] = []
+    for i in order:
+        reg = reqs[i]["source"]["regulation"]
+        if not any(reqs[j]["source"]["regulation"] == reg and fuzz.ratio(norm[i], norm[j]) >= DEDUP_MIN for j in kept):
+            kept.append(i)
+    return [reqs[i] for i in sorted(kept)]

@@ -4,15 +4,15 @@ Scores and experiments so far on the worked example `dev-rear-lamp` (190 expecte
 
 ## Best submission
 
-**`out/best_dev-rear-lamp.json`.** This is v1, uploaded on 24 Oct at 15:40, with `team_id` corrected to `team-08`.
+**Best scored on the platform: `out/best_dev-rear-lamp.json`.** This is v6b, uploaded on 24 Oct at 17:36: the critic filter, then the paragraph ranker (score ≥ 20), then duplicate removal at ≥ 93%. These are now the pipeline defaults.
 
 | Level | Precision | Recall | F1 | F2 |
 |---|---|---|---|---|
-| Requirements (platform judge) | 31.5% | 71.1% | 43.6% | **56.8%** |
-| Pages | 65.0% | 98.1% | 78.2% | |
+| Requirements (platform judge) | 43.4% | 71.1% | 53.9% | **63.0%** |
+| Pages | 71.4% | 94.3% | 81.3% | |
 | Regulations | 100% | 100% | 100% | |
 
-It has 429 requirements and passes `tools/validate.py`. The uploaded original is kept in `out/uploads/dev-rear-lamp_v1_F2-0.568.json`.
+It has 311 requirements and passes `tools/validate.py`. The other uploads were v1 (0.568), v2 (0.499), v5 (0.625) and v6a (0.607), all kept in `out/uploads/`.
 
 ## All runs
 
@@ -22,10 +22,17 @@ Requirement-level scores come from our own judge (`eval/judge.py`), except where
 |---|---|---|---|---|---|---|
 | **v1** | `out/uploads/dev-rear-lamp_v1_F2-0.568.json` | close to the wording, subject named after the product | 429 | 143–146 | 0.601–0.614 | **0.568** |
 | v1b | `out/dev-rear-lamp/v1b.json` | v1 prompt restored | 421 | 144 | 0.610 | — |
-| v2 | `out/dev-rear-lamp/v2.json` | strictly verbatim; every "shall" and list item split | 412 | 127 | 0.542 | — |
+| v2 | `out/dev-rear-lamp/v2.json` | strictly verbatim; every "shall" and list item split | 412 | 127 | 0.542 | **0.499** (P 28.4%, R 61.6%; pages 66.2% / 100%) |
 | v2, unfiltered | `out/dev-rear-lamp/v2_all.json` | v2 before the critic filter | 599 | 148 | 0.545 | — |
 | v3 | `out/dev-rear-lamp/v3.json` | verbatim, but tolerances and exceptions kept with the obligation | 389 | 128 | 0.557 | — |
 | v3, unfiltered | `out/dev-rear-lamp/v3_all.json` | v3 before the critic filter | 572 | 138 | 0.518 | — |
+| v4 | `out/dev-rear-lamp/v4.json` | v1 rules + retrieved expert examples + parent context | 408 | 141 | 0.604 | — |
+| v4, unfiltered | `out/dev-rear-lamp/v4_all.json` | v4 before the critic filter | 599 | 147 | 0.541 | — |
+| v5 | `out/uploads/dev-rear-lamp_v5_F2-0.625.json` | v1b + paragraph ranker (score ≥ 20) + duplicate removal (≥ 97%) | 352 | 141 | **0.634** | **0.625** (P 39.5%, R 73.2%; pages 71.4% / 94.3%) |
+| v6a | `out/uploads/dev-rear-lamp_v6a_F2-0.607.json` | v5 with ranker cut-off 30 instead of 20 | 311 | 131 | 0.612 | **0.607** (P 41.8%, R 68.4%; pages 76.9% / 94.3%) |
+| **v6b (best)** | `out/uploads/dev-rear-lamp_v6b_F2-0.630.json` | v5 with duplicate threshold 93% instead of 97% | 311 | 136 | 0.635 | **0.630** (P 43.4%, R 71.1%; pages 71.4% / 94.3%) |
+| v7 | `out/dev-rear-lamp/v7_new_drawing.json` | full fresh run on the new labelled drawing | 360 | 122 | 0.545 | — |
+| v8 | `out/dev-rear-lamp/v8_union2_dedup93.json` | v5 and v7 combined, duplicates removed at 93% | 508 | 136 | 0.536 | — |
 | offline test | `out/dev-rear-lamp/offline_test.json` | v1b, rerun from saved stages with 0 API calls | 421 | 144 | 0.610 | — |
 
 Next to each file, `<name>.judge.json` lists the matched pairs, the misses and the extras.
@@ -61,7 +68,22 @@ There's no expected answer for this case; the selection is a judgement call.
 | **current** (scope, condition and numbers must agree) | 143 / 146 | 0.601 / 0.614 | +3–4 F2 points |
 
 - **Noise:** two fresh runs on the same file differ by about ±3 matches.
+- **Fifth upload (v6b):** platform 0.630 against 0.635 from our judge. Duplicates at 93% beat 97%, so 93 is the new default.
+- **Fourth upload (v6a):** platform 0.607 against 0.612 from our judge. Cut-off 30 loses more recall than it gains in precision, so 20 stays the default.
+- **Run-to-run variance:** a full fresh run on the new drawing (v7) matched 122 against 144 for v1b. The missed obligations are spread across all regulations (27 lost, 5 gained): the extractor emits a different subset each run. Combining two runs (v8) doesn't help, because their wordings differ too much for duplicate removal to merge them.
+- **Third upload (v5):** platform 0.625 against 0.634 from our judge, so it was only 0.9 points high this time. The offset varies (0.9 to 4.6), but the ranking of files was right in all three uploads: v5 > v1 > v2.
+- **Confirmed on a second upload:** v2 scored 0.499 on the platform against 0.542 from our judge. Our judge sits a steady ~4 F2 points above the platform. It predicted v1 → v2 as −5.9 to −7.2, and the platform measured −6.9. Use it to rank candidate files before uploading.
 - **How to read it:** a local F2 of 0.60 is about 0.57 on the platform.
+
+## Retrieval and ranking experiments (v4, v5)
+
+- **Paragraph ranker** (`pipeline/rank.py`): one call per section. It sees retrieved expert examples (paragraphs listed, with their requirement, and paragraphs not listed) from other regulations and from the R175 sub-goal data, leaving out the same case and regulation.
+  - It separates expert from non-expert paragraphs with an AUC of 0.80 (R10 0.93, R148 0.82, R150 0.80, R48 0.75).
+  - Only the bottom cut pays: below a score of 20 the hit rate is 6%, under the 12% break-even. Between 20 and 30 it's 24%.
+  - Net gain: +0.010 F2.
+- **Duplicate removal** (`verify.dedup`, ≥ 97% similar within a regulation): +0.013 F2, costs at most 1 match.
+- **Retrieved style examples + parent context in the extractor (v4):** 141 matches against 143–146 for v1, so no gain. Turned off (`extract.STYLE_EXAMPLES = False`).
+- **Plateau:** every extractor variant (v1–v4) reaches 140–148 matches before filtering. A perfect paragraph filter would give 0.714 on our judge (~0.67 on the platform). The ranker gets about a tenth of that gap.
 
 ## What we learned
 
@@ -98,14 +120,16 @@ About $30 of the $150 budget spent so far. Approximate cost per stage:
 
 | Measure | Result |
 |---|---|
-| Flagged recall (the platform's main sub-goal measure) | **0.917** (22/24) |
+| Flagged recall | 0.917 (22/24) |
 | Flagged precision | 0.957 |
+| **Platform (uploaded 24 Oct 16:35)** | **flag recall 83.3%, flag precision 87.0%, change accuracy 94.7%** |
 | Modified/removed: flagged / right change type | 7/7, 7/7 |
 | Added: found / submitted | 15/17, 16 |
 | `new_text` wording vs expected (modified / added) | 93% / ~91% similar |
 
 - **Missed (2):** "Tests without a target may be combined where feasible" (a clause the experts split out of a sentence), and the second of two 6.6.2.1 items, which the PDF lists inline as "(a) …, (b) …".
 - **Reasons:** use the expected template ("'a' became 'b'; 'c' was added"). R-018 and R-090 match the expected reason almost word for word.
+- **Platform vs ours:** the platform matched 2 fewer changes. They must be among the added items, since modified and removed are matched by ID. Our offline pairing of added items (same paragraph plus loose wording) is too generous. The uploaded file is kept as `out/uploads/subgoal-dev_v1_recall-0.833.json`.
 - **Caveat:** the two thresholds (`MODIFIED_MIN = 56`, `ADDED_MAX = 75`) were tuned on this one pair, which is the only one we have.
 
 ## Not done yet

@@ -116,7 +116,10 @@ It does not apply when its scope excludes the product's vehicle category, or it 
 A regulation that approves the whole vehicle for a general property (for example the shape of its exterior)
 applies to a component only if it has provisions written for that component type (for example a section on
 bumpers, or on headlamps); general requirements that cover the whole exterior or every part of it do not count,
-and if it explicitly exempts or excludes the component type, it does not apply. The <mentions> show the regulation's paragraphs that name the
+and if it explicitly exempts or excludes the component type, it does not apply. A regulation that approves a
+vehicle system (for example its protective devices in a low-speed impact) applies to the parts of that system;
+a provision that only requires other devices to keep working after that system's test (lamps after a bumper
+impact) does not make it apply to those other devices. The <mentions> show the regulation's paragraphs that name the
 product's parts and functions: use them to see dedicated provisions and exclusions.
 
 Answer "maybe" when the scope could cover the product but you are not sure. Base the decision on the regulation's
@@ -157,6 +160,8 @@ Resolve overlaps:
 - drop regulations whose link to this product is speculative, or that only concern other vehicle systems;
 - drop whole-vehicle regulations that reach the product only through general requirements on the entire
   exterior, with no provisions written for this component type;
+- drop a regulation that approves another vehicle system when it touches this product only by requiring it to
+  survive or keep working after that system's test;
 - do not include a regulation on the condition of an assumption the specification contradicts (if the spec
   says the light sources are LED modules, regulations for replaceable filament bulbs are out).
 A missed regulation costs more than an extra one, but every wrong regulation adds many wrong requirements."""

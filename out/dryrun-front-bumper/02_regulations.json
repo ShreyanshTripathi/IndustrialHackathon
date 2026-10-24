@@ -5,7 +5,7 @@
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to retro-reflecting devices for vehicles of categories L, M, N, O, and T",
-   "reason": "The bumper's specification lists front fog lamps, direction indicators and parking sensors but no retro-reflectors, and front retro-reflectors are optional on M1. R3 approves only retro-reflecting devices, so it sets no requirements for this product as specified."
+   "reason": "Although M1 is within scope, the specified bumper integrates only active LED front fog lamps, front direction indicators and ultrasonic sensors. No retro-reflector (reflex reflector) is listed among its parts or functions, so no device approved by R3 is part of the product."
   },
   "UN R6": {
    "applies": "yes",
@@ -15,33 +15,33 @@
     "Front direction indicator lamps"
    ],
    "scope_evidence": "This Regulation applies to direction indicators for vehicles of categories L, M, N, O, and T.",
-   "reason": "The bumper integrates LED front direction indicator lamps, a device type approved under UN R6, for M1 vehicles, which are within the regulation's scope. (Note: R6 is consolidated by UN R148, which may be used as the alternative approval route.)"
+   "reason": "The bumper integrates LED front direction indicator lamps, which are devices type-approved under UN R6 (e.g. category 1/1a/1b front indicators) for M1 vehicles. These lamps must meet R6 requirements on intensity, light distribution, colour and marking."
   },
   "UN R7": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "\"Front and rear position lamps, stop-lamps and end-outline marker lamps of different type\" means lamps which differ in such essential respects as...",
-   "reason": "UN R7 approves position lamps, stop lamps and end-outline marker lamps. The bumper integrates only front fog lamps and front direction indicators, which other regulations cover, and the specification lists no position or end-outline lamp function."
+   "reason": "UN R7 approves only position lamps, stop lamps and end-outline marker lamps. The bumper's integrated lamps are front fog lamps and direction indicators, which other regulations cover, and the specification does not mention any position or end-outline lamp."
   },
   "UN R10": {
    "applies": "yes",
    "basis": "component_technology",
    "functions_covered": [
-    "Ultrasonic parking sensors",
     "LED front fog lamps",
     "LED front direction indicator lamps",
-    "Wiring harness"
+    "Ultrasonic parking-assist sensors",
+    "Wiring harness / electrical sub-assemblies"
    ],
    "scope_evidence": "Components and separate technical units intended to be fitted in these vehicles with the limitation given in paragraph 3.2.1. with regard to electromagnetic compatibility.",
-   "reason": "The bumper contains electrical/electronic sub-assemblies (ultrasonic sensors, LED lamps with drivers) fitted to M1 vehicles. These ESAs fall under R10 EMC emission and immunity requirements. The direction indicators are also an immunity-related function, since disturbances could confuse other road users."
+   "reason": "The bumper integrates electronic sub-assemblies (LED fog and indicator lamps, ultrasonic parking sensors) for M1 vehicles, which are ESAs subject to R10 emission and immunity requirements. The direction indicators also relate to signalling to other road users, which is an immunity-related function."
   },
   "UN R13H": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the braking of vehicles of categories M1 and N1.",
-   "reason": "R13H approves the vehicle braking system; the front bumper, its lamps and parking sensors are not part of the braking system and do not determine braking performance. The mentions of wiring, sensors and lights refer to brake system components, not to this product."
+   "reason": "R13H approves the braking system of M1/N1 vehicles. The front bumper, its lamps and its parking sensors are not part of the braking system and do not determine braking performance. The mentions about wiring, sensors and lights refer only to braking-system components."
   },
   "UN R19": {
    "applies": "yes",
@@ -51,61 +51,62 @@
     "Front fog lamps"
    ],
    "scope_evidence": "This Regulation applies to front fog lamps, which may incorporate lenses of glass or plastic material.",
-   "reason": "The bumper integrates LED front fog lamps with PC lenses, which are a device type approved under UN R19 (class B or F3; LED modules permitted for F3). The fog lamps must therefore meet R19 photometric, colour, marking and stability requirements."
+   "reason": "The bumper integrates LED front fog lamps with PC lenses. These are exactly the device type that UN R19 approves, so the fog lamps need R19 approval (Class F3 permits LED modules)."
   },
   "UN R23": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "\"Reversing/manoeuvring lamps of different types\" means lamps which differ in such essential respects as...",
-   "reason": "UN R23 approves reversing and manoeuvring lamps. The front bumper integrates front fog lamps and front direction indicators but no reversing or manoeuvring lamps, so this regulation does not apply."
+   "reason": "UN R23 approves reversing and manoeuvring lamps only. The front bumper contains front fog lamps and front direction indicators, neither of which is a reversing or manoeuvring lamp, so none of its functions fall within this regulation."
   },
   "UN R26": {
    "applies": "yes",
    "basis": "vehicle_system",
    "functions_covered": [
-    "bumper (cover, beam, ends) external projections",
-    "lower grille (grilles and gaps provisions)",
-    "exterior styling and aerodynamic closure",
-    "lamps and sensors as parts on or of the bumper"
+    "Bumper cover (fascia)",
+    "Bumper beam (reinforcement)",
+    "Energy absorber",
+    "Lower grille",
+    "exterior styling and aerodynamic closure"
    ],
-   "scope_evidence": "This Regulation applies to external projections of category M1 vehicles... 6.5 Bumpers; 6.3 Grilles and gaps",
-   "reason": "R26 approves M1 vehicles for external projections. It has dedicated provisions for bumpers (6.5, including bumper ends, the bumper cover and parts on the bumper) and for grilles (6.3), so the front bumper assembly directly determines compliance."
+   "scope_evidence": "This Regulation applies to external projections of category M1 vehicles. ... 6.5 Bumpers; 6.3 Grilles and gaps",
+   "reason": "R26 approves the external projections of M1 vehicles and contains dedicated provisions for bumpers (6.5, including bumper ends and bumper cover) and grilles (6.3). The front bumper of an M1 car must therefore meet these requirements, although the lamps and sensors are not covered beyond the general exterior provisions."
   },
   "UN R32": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "applies to vehicles of category M1 with regard to their behaviour in a rear-end collision ... behaviour of the structure of the passenger compartment in a rear-end collision",
-   "reason": "R32 approves the vehicle's passenger compartment structure in a rear impact. A front bumper sits at the opposite end of the vehicle and does not determine rear-end collision behaviour, and the regulation has no provisions for front bumpers."
+   "scope_evidence": "\"approval of a vehicle\" means the approval of a vehicle type with regard to the behaviour of the structure of the passenger compartment in a rear-end collision",
+   "reason": "UN R32 approves the M1 vehicle for passenger compartment behaviour in a rear-end collision, using an impactor striking the rear of the vehicle. A front bumper assembly plays no part in that system or test."
   },
   "UN R37": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "applies to filament light sources and their LED replacement light sources shown in Annex 1 and intended for use in approved lamps",
-   "reason": "The specification describes the bumper's fog lamps and direction indicators as integrated LED lamps, so they do not use filament bulbs or Annex 1 LED replacement light sources. R37 approves only those replaceable light sources, so it sets no requirements for this bumper."
+   "scope_evidence": "This Regulation applies to filament light sources and their LED replacement light sources shown in Annex 1 and intended for use in approved lamps",
+   "reason": "The bumper's fog lamps and direction indicators are specified as LED lamps, so they contain no filament light sources or LED replacement bulbs that R37 approves. R37 approves replaceable light sources, not the lamps themselves, which fall under other lighting regulations."
   },
   "UN R38": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "\"Rear fog lamps of different types\" means lamps which differ in such essential respects as...",
-   "reason": "UN R38 approves rear fog lamps only. The bumper integrates front fog lamps and front direction indicators, which are covered by other regulations (R19, R6/R148), so R38 does not apply."
+   "reason": "UN R38 approves rear fog lamps only. The bumper has front fog lamps and front direction indicators, which this regulation does not cover."
   },
   "UN R39": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation applies to the approval of vehicles of categories L, M and N with regard to speedometer and odometer equipment",
-   "reason": "UN R39 concerns speedometer and odometer equipment and its installation. The front bumper's functions (impact protection, lamps, parking sensors) neither include nor determine speed or distance indication."
+   "scope_evidence": "This Regulation applies to the approval of vehicles of categories L, M and N with regard to speedometer and odometer",
+   "reason": "UN R39 concerns speedometer and odometer equipment. No function or part of the front bumper (impact structure, lamps, parking sensors) determines speed or distance indication, so the regulation does not apply."
   },
   "UN R40": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the emission of gaseous pollutants from positive-ignition engines of vehicles of categories L3, L4 and L5.",
-   "reason": "R40 covers exhaust emissions of motorcycle engines (L3–L5). The product is an M1 front bumper with no emission-related function, so both the vehicle category and the subject matter are outside scope."
+   "reason": "UN R40 covers exhaust emissions of positive-ignition engines in motorcycles (L3, L4, L5). It does not cover M1 vehicles or bumpers, lamps or parking sensors."
   },
   "UN R42": {
    "applies": "yes",
@@ -118,14 +119,14 @@
     "Mounting brackets"
    ],
    "scope_evidence": "This Regulation applies to vehicles of category M1 with regard to the behaviour of their front and rear protective devices when involved in a collision at low speed.",
-   "reason": "R42 approves M1 vehicles for the low-speed impact behaviour of their front and rear protective devices (bumpers). The front bumper's beam, absorber and mountings directly determine the result of the 4 km/h longitudinal and corner impact tests."
+   "reason": "The front bumper is the M1 front protective device whose low-speed impact behaviour R42 approves, so its beam, absorber, cover and mountings directly determine compliance. The lamps and parking sensors are not covered: the requirement that other systems keep working after the test does not make R42 apply to them, and sensors of driver-assist systems are explicitly excluded."
   },
   "UN R43": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "to the exclusion of: (i) Glazing for lighting and light-signalling devices",
-   "reason": "R43 covers safety glazing used as windscreens, panes or partitions. The bumper contains no such glazing, and the PC lenses of its fog lamps and direction indicators fall under the scope's explicit exclusion for lighting and light-signalling glazing."
+   "reason": "The front bumper has no windscreen, pane or partition glazing. Its only transparent parts are the lamp lenses, and glazing for lighting and light-signalling devices is explicitly excluded from R43's scope."
   },
   "UN R48": {
    "applies": "yes",
@@ -137,77 +138,77 @@
     "Front direction indicator lamps"
    ],
    "scope_evidence": "This Regulation applies to vehicles of categories M, N, and to their trailers (category O) with regard to the installation of lighting and light-signalling devices.",
-   "reason": "The bumper integrates front fog lamps and front direction indicators on an M1 vehicle. R48 sets their installation requirements, including number, position, mounting heights, geometric visibility, colour and electrical switching (e.g. para. 6.5 for direction indicators), which the bumper design must enable."
+   "reason": "The bumper integrates front fog lamps and front direction indicators on an M1 vehicle. R48 sets installation requirements for these lamps (position, mounting height, spacing, geometric visibility, colour and switching, e.g. 6.5 for direction indicators), and the bumper design determines whether they are met."
   },
   "UN R49": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation shall apply to motor vehicles of categories M1, M2, N1 and N2 with a reference mass exceeding 2,610 kg ... emissions of C.I. and P.I. engines",
-   "reason": "UN R49 regulates pollutant emissions from heavy-duty engines and vehicles, covering the engine, exhaust aftertreatment and OBD. The front bumper, its integrated lamps and its parking sensors play no role in engine emissions, so the regulation sets no requirements for this product."
+   "reason": "UN R49 regulates pollutant emissions from heavy-duty engines and vehicles. A front bumper assembly with its lamps and parking sensors does not determine engine emissions, so the regulation concerns other systems."
   },
   "UN R51": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation contains provisions on the sound emitted by motor vehicles and applies to vehicles of categories M and N.",
-   "reason": "UN R51 approves vehicles for exterior sound emission, which is governed by the powertrain, exhaust, tyres and sound enhancement systems. It has no provisions written for bumpers, lamps or parking sensors, so this front bumper does not determine R51 compliance."
+   "reason": "UN R51 approves vehicles for exterior sound emission (powertrain, exhaust, tyres). It has no provisions for bumpers, lamps or parking sensors. The mentions of 'parking brake' and 'obstacle' are unrelated to this product."
   },
   "UN R53": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles of category L3 with regard to the installation of lighting and light-signalling devices.",
-   "reason": "UN R53 covers only lighting installation on L3 motorcycles. This product is a bumper for M1 passenger cars, so its fog lamps and direction indicators fall outside this regulation's vehicle category."
+   "reason": "UN R53 covers lamp installation only on L3 motorcycles. This bumper is for M1 passenger cars, so the vehicle category is outside the scope, even though the bumper contains fog lamps and direction indicators."
   },
   "UN R62": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles of categories L1 to L7, if fitted with handlebars.",
-   "reason": "UN R62 covers anti-theft protective devices for handlebar-equipped L-category vehicles. The product is a front bumper for M1 passenger cars and has no anti-theft function, so the regulation does not apply."
+   "reason": "UN R62 covers anti-theft protective devices for handlebar-equipped L-category vehicles. The product is a front bumper for M1 passenger cars and contains no anti-theft device."
   },
   "UN R64": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the approval of vehicles of category M1 and N1 when equipped with: (a) A temporary use spare unit; and/or (b) Run-flat tyres and/or a run-flat system",
-   "reason": "UN R64 concerns temporary-use spare units, run-flat tyres and run-flat warning systems. A front bumper with lamps and parking sensors plays no part in these systems; the sensor and warning mentions refer to tyre-related systems, not the bumper."
+   "reason": "UN R64 covers temporary-use spare units, run-flat tyres/systems and run-flat warning systems. The front bumper assembly contains none of these. The sensor and electrical mentions refer only to the run-flat warning system, not to parking sensors or lamps."
   },
   "UN R67": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "Approval of specific equipment of vehicles of category M and N1 using liquefied petroleum gases in their propulsion system",
-   "reason": "UN R67 covers LPG fuel system components and their installation. The front bumper assembly, including its lamps and parking sensors, contains no LPG equipment, so the regulation concerns other systems."
+   "reason": "R67 covers LPG fuel system components and their installation; a front bumper assembly with lamps and parking sensors contains no LPG equipment. The mentions concern hose couplings, containers and LPG wiring, not bumper parts."
   },
   "UN R79": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the steering equipment of vehicles of Categories M, N and O.",
-   "reason": "R79 approves vehicle steering systems; the front bumper, its lamps and parking sensors are not steering equipment. The regulation only references direction indicators and sensors as inputs to steering functions, not as components it approves."
+   "reason": "R79 approves steering equipment; the front bumper with lamps and parking sensors is not part of the steering system. The mentions of direction indicators and sensors concern ACSF lane-change logic and turning-circle definitions, and impose no requirements on the bumper, its lamps or its parking sensors."
   },
   "UN R83": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "type approval of motor vehicles with regard to crankcase emissions (Type 3 test) and exhaust emissions at low ambient temperature (Type 6 test)",
-   "reason": "UN R83 covers vehicle emissions, in-service conformity, anti-tampering and related topics. A front bumper assembly with lamps and parking sensors does not determine emissions performance. The sensor mentions refer to emission-related data manipulation, not parking sensors."
+   "reason": "R83 approves M1/N1 vehicles for emissions, in-service conformity, anti-tampering and related monitoring. A front bumper with lamps and parking sensors does not determine emissions performance, and the regulation's mentions of 'sensors' refer to emissions and energy data integrity, not parking sensors."
   },
   "UN R89": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "limit the road speed of vehicles by means of a vehicle system which has the primary function of controlling the fuel feed to the engine or via the engine management",
-   "reason": "UN R89 concerns speed limitation devices/functions acting on fuel feed or engine management. The front bumper, its lamps and its parking sensors perform no speed limitation function."
+   "scope_evidence": "to limit the road speed of vehicles by means of a vehicle system which has the primary function of controlling the fuel feed to the engine or via the engine management",
+   "reason": "UN R89 covers speed limitation devices (SLD/ASLD) and their installation, which are engine or fuel-feed control systems. The front bumper's impact protection, lamps and parking sensors have no part in limiting vehicle speed."
   },
   "UN R92": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "applies to non-original replacement exhaust silencing systems for vehicles of categories L1, L2, L3, L4 and L5",
-   "reason": "R92 covers replacement exhaust silencers for L-category motorcycles. The product is an M1 front bumper with no exhaust silencing function."
+   "reason": "R92 covers replacement exhaust silencers for L-category vehicles. The product is an M1 front bumper with no exhaust silencing function, so both the vehicle category and the system type fall outside the scope."
   },
   "UN R94": {
    "applies": "maybe",
@@ -217,71 +218,71 @@
     "Bumper beam (reinforcement)",
     "Energy absorber"
    ],
-   "scope_evidence": "This Regulation applies to vehicles of category M1 ... of a total permissible mass not exceeding 2,500 kg",
-   "reason": "R94 approves the whole M1 vehicle for occupant protection in an offset frontal crash, and the vehicle type covers features that affect the impact test result. The bumper beam and absorber form part of the front crash structure and can influence that result, but the regulation has no provisions written specifically for bumpers, so whether it applies to this product is uncertain."
+   "scope_evidence": "This Regulation applies to vehicles of category M1 of a total permissible mass not exceeding 2,500 kg; vehicle type differs in … the length and width of the vehicle … (structure forward of the driver's seat)",
+   "reason": "R94 approves the M1 vehicle's occupant protection in a frontal offset crash. The bumper beam, bolted to the crash boxes, is part of the front-end load path that affects crash energy management, but the shown provisions contain no bumper-specific requirements. Applicability therefore depends on how much the beam contributes to the vehicle's frontal crash performance."
   },
   "UN R100": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "Safety requirements with respect to the electric power train of road vehicles of categories M, N and O1 ... equipped with electric power train",
-   "reason": "R100 covers the high-voltage electric power train and the REESS. The front bumper's low-voltage lamps, ultrasonic sensors and harness are not part of the electric power train, and the bumper's structural parts do not determine power-train or REESS safety."
+   "scope_evidence": "Safety requirements with respect to the electric power train of road vehicles ... equipped with electric power train",
+   "reason": "UN R100 covers the high-voltage electric power train and REESS of electric vehicles. A front bumper with low-voltage lamps and parking sensors is not part of the electric power train, so the regulation sets no requirements for it."
   },
   "UN R101": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "applies to vehicles of categories M1 and N1 with regard to: (a) the measurement of the emission of carbon dioxide (CO2) and fuel consumption and/or ... electric energy consumption and electric range",
-   "reason": "UN R101 approves whole vehicles for measured CO2 emissions, fuel and energy consumption and electric range. It has no provisions written for bumpers, lamps or parking sensors. The bumper's aerodynamic effect on road load is only an indirect contribution to a whole-vehicle test, not a component requirement."
+   "reason": "R101 approves the whole vehicle's CO2, fuel consumption and electric range measurement. It has no dedicated provisions for bumpers, fog lamps, direction indicators or parking sensors. The bumper only indirectly affects road load and aerodynamics, which is a general vehicle property, so the regulation does not set requirements for this component."
   },
   "UN R102": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles of categories N2, N3, O3 and O4.",
-   "reason": "UN R102 covers close-coupling devices between towing vehicles and trailers of categories N2, N3, O3 and O4. The product is an M1 front bumper, which is outside this vehicle scope and contains no close-coupling device."
+   "reason": "UN R102 covers close-coupling devices between towing vehicles and trailers of categories N2, N3, O3 and O4. The product is a front bumper for M1 passenger cars and contains no close-coupling device."
   },
   "UN R103": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "applies to the type-approval, as separate technical units, of pollution control device ... Catalytic converters and particulate filters shall be considered to be pollution control devices",
-   "reason": "R103 covers replacement catalytic converters and particulate filters in the exhaust line. A front bumper assembly with lamps and parking sensors contains no pollution control device."
+   "scope_evidence": "type-approval, as separate technical units, of pollution control device ... Catalytic converters and particulate filters shall be considered to be pollution control devices",
+   "reason": "UN R103 covers only replacement catalytic converters and particulate filters in the exhaust line. The front bumper assembly contains no such pollution control device, and the regulation's mentions of sensors refer to exhaust oxygen probes, not parking sensors."
   },
   "UN R104": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to retro-reflective markings for vehicles of category M2, M3, N, O2, O3 and O4.",
-   "reason": "The product is for M1 vehicles, which are outside R104's scope. The product also contains no retro-reflective marking material."
+   "reason": "R104 does not cover M1 vehicles, and the bumper has no retro-reflective marking material. Its lamps and sensors fall under other regulations."
   },
   "UN R107": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to every single-deck, double-deck, rigid or articulated vehicle of category M2 or M3.",
-   "reason": "UN R107 covers the construction of M2 and M3 buses and coaches. The front bumper is for M1 passenger cars, a vehicle category outside the regulation's scope."
+   "reason": "UN R107 covers the general construction of buses and coaches (M2/M3). This front bumper is for M1 passenger cars only, so the regulation's scope excludes it."
   },
   "UN R114": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation applies to the following aftermarket equipment: to airbag modules for replacement airbag systems intended to be installed on motor vehicles; to replacement steering wheels...",
-   "reason": "R114 covers aftermarket replacement airbag modules, replacement steering wheels and replacement airbag systems. The front bumper contains no airbag or occupant restraint components, and the regulation's mentions of direction indicators and wiring harnesses only concern steering-wheel tell-tale visibility and airbag wiring."
+   "scope_evidence": "This Regulation applies to the following aftermarket equipment: to airbag modules for replacement airbag systems ... replacement steering wheels ... replacement airbag systems",
+   "reason": "UN R114 covers aftermarket replacement airbag modules, steering wheels and airbag systems for occupant restraint. The front bumper has no airbag. Its mentions of direction indicators and wiring harness refer only to steering-wheel tell-tales and airbag wiring."
   },
   "UN R116": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "Approval of vehicle alarm systems (VAS)... Approval of immobilizers and vehicles... with regard to their devices to prevent unauthorized use",
-   "reason": "R116 covers anti-theft devices, alarm systems and immobilizers. The bumper's direction indicators may be flashed by an alarm system as its optical signal, but that is a requirement on the alarm system, not on the lamps or the bumper assembly."
+   "scope_evidence": "Approval of a vehicle of category M1 and N1 with regard to its devices to prevent unauthorized use ... vehicle alarm systems (VAS) ... immobilizers",
+   "reason": "R116 approves anti-theft devices, alarm systems and immobilizers, none of which the bumper provides. The alarm system may flash the direction indicators, but that is a requirement on the alarm's signalling, not on the indicator lamps themselves."
   },
   "UN R123": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to adaptive front-lighting systems (AFS) for motor vehicles of categories M and N1.",
-   "reason": "The bumper contains front fog lamps and direction indicators, not an adaptive front-lighting system providing passing/driving beams. AFS approval does not cover these lamp types; they fall under other lamp regulations."
+   "reason": "The bumper integrates front fog lamps and direction indicators, but no headlamps or adaptive passing/driving beam system. AFS approval under R123 concerns passing- and driving-beam systems, which the product does not provide. The front direction indicators are mentioned only as possibly grouped lamps in approval-mark examples, which does not bring them under R123's scope."
   },
   "UN R127": {
    "applies": "yes",
@@ -289,35 +290,35 @@
    "functions_covered": [
     "pedestrian lower-leg impact protection",
     "Energy absorber",
-    "Bumper beam (reinforcement)",
-    "Bumper cover (fascia)"
+    "Bumper cover (fascia)",
+    "Bumper beam (reinforcement)"
    ],
-   "scope_evidence": "This Regulation applies to motor vehicles of categories M1 and N1 ... \"Bumper test area\" means either the front vehicle fascia between the left and right corner of bumper",
-   "reason": "R127 approves M1 vehicles for pedestrian protection and contains bumper-specific provisions (bumper beam, bumper test area, lower legform tests). The front bumper's fascia, EPP absorber and beam directly determine the lower-leg impact results."
+   "scope_evidence": "This Regulation applies to motor vehicles of categories M1 and N1; \"Bumper test area\" means either the front vehicle fascia between the left and right corner of bumper",
+   "reason": "R127 approves M1 vehicles for pedestrian protection, with dedicated bumper provisions (bumper beam, bumper test area, lower legform tests). The bumper's fascia, EPP absorber and beam directly determine the lower-leg impact results."
   },
   "UN R128": {
    "applies": "maybe",
    "basis": "device_approval",
    "functions_covered": [
-    "front fog lamp (LED light source)",
-    "front direction indicator (LED light source)"
+    "front fog lamp (front fog illumination)",
+    "front direction indicator (turn signalling)"
    ],
    "scope_evidence": "This Regulation applies to LED light sources shown in Annex 1 and intended for use in approved lamps of power- driven vehicles",
-   "reason": "The fog and direction indicator lamps are LED-based, but R128 applies only if they use replaceable LED light source categories listed in Annex 1. The specification does not say whether they do or use non-replaceable LED modules, which R128 does not approve."
+   "reason": "The integrated LED fog lamps and direction indicators would fall under R128 only if they use replaceable LED light sources of an Annex 1 category. The specification does not say whether they use such light sources or non-replaceable LED modules, which R128 does not cover."
   },
   "UN R131": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation applies to the approval of vehicles of Category M2, M3, N2 and N3 with regard to an on-board system to: (a) Avoid or mitigate the severity of a rear-end in lane collision...",
-   "reason": "R131 covers AEBS on heavy vehicle categories M2, M3, N2 and N3 only, so the product's M1 category is outside the scope. The bumper also has no AEBS function; its ultrasonic sensors are only for parking assist."
+   "scope_evidence": "This Regulation applies to the approval of vehicles of Category M2, M3, N2 and N3 with regard to an on-board system to: (a) Avoid or mitigate the severity of a rear-end in lane collision",
+   "reason": "R131 approves AEBS on heavy vehicle categories M2, M3, N2 and N3 only, so the product's M1 category is outside its scope. The bumper's ultrasonic parking sensors are also not part of an AEBS."
   },
   "UN R132": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation applies to Retrofit Emission Control devices (REC) to be installed: On category M2, M3 and N vehicles ... excluding those vehicles approved according to Regulation No. 83",
-   "reason": "R132 approves retrofit exhaust emission control devices for CI engines in M2, M3, N, T vehicles and non-road machinery. A front bumper for M1 vehicles is neither an emission control device nor fitted to an in-scope vehicle category."
+   "scope_evidence": "This Regulation applies to Retrofit Emission Control devices (REC) to be installed: On category M2, M3 and N vehicles and their CI engines",
+   "reason": "R132 covers retrofit exhaust emission control devices for CI engines in M2, M3, N, T vehicles and non-road machinery. It does not cover M1 front bumpers, lamps or parking sensors."
   },
   "UN R137": {
    "applies": "maybe",
@@ -327,8 +328,8 @@
     "Bumper beam (reinforcement)",
     "Energy absorber"
    ],
-   "scope_evidence": "This Regulation applies to vehicles of category M1 and to vehicles of category N1 ... The vehicle shall be tested and approved in accordance with the method described in Annex 3 (Full Width Rigid Barrier test)",
-   "reason": "R137 approves the M1 vehicle's occupant restraint performance in a full-width rigid-barrier frontal crash. The bumper beam, bolted to the crash boxes, is part of the front structure that shapes the crash pulse, but the regulation has no provisions written for bumpers, and occupant protection depends mainly on the body structure and restraint systems."
+   "scope_evidence": "\"Vehicle type\" means a category of power-driven vehicles which do not differ in such essential respects, in so far as they have an adverse effect on the result of the impact test prescribed in this Regulation, as: (a) The length and width of the vehicle; (b) T...",
+   "reason": "R137 approves M1 vehicles for occupant restraint in a full-width rigid-barrier frontal impact. The front structure, including the bumper beam bolted to the crash boxes, can influence the crash pulse and the vehicle-type definition. However, the regulation has no bumper-specific provisions and mainly concerns the restraint system, so its relevance to this bumper is uncertain."
   },
   "UN R148": {
    "applies": "yes",
@@ -338,7 +339,7 @@
     "Front direction indicator lamps"
    ],
    "scope_evidence": "This Regulation applies to the following light-signalling devices (lamps): ... Direction indicator lamps",
-   "reason": "The bumper integrates LED front direction indicator lamps, which are a device type approved under UN R148 (front direction indicator categories 1, 1a, 1b, etc.). Front fog lamps are not in R148's scope (only rear fog lamps), so they fall under a different regulation."
+   "reason": "The bumper integrates front direction indicator lamps, which are a device type approved under R148 (Table 1 lists 'Front direction indicator lamp 1, 1a, 1b...'). Front fog lamps are not in R148's scope, since they are covered by R149, and R148 does not cover the parking sensors or the bumper structure."
   },
   "UN R149": {
    "applies": "yes",
@@ -348,89 +349,89 @@
     "Front fog lamps"
    ],
    "scope_evidence": "This Regulation applies to the following road illumination devices (lamps): ... Front fog lamps for vehicles of categories L3, L4, L5, L7, M, N and T",
-   "reason": "The bumper integrates LED front fog lamps for an M1 vehicle, and R149 approves front fog lamps as a device type for category M. The direction indicators and other bumper functions are outside its scope."
+   "reason": "The bumper integrates LED front fog lamps for an M1 vehicle, and front fog lamps for category M vehicles are a device type approved under R149. The direction indicators and other bumper functions are not covered by this regulation."
   },
   "UN R150": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to retro-reflective devices as: • Retro-reflectors of the Classes IA, IB, IIIA, IIIB and IVA • Retro-reflective Marking Materials ... • Advance Warning Triangles",
-   "reason": "R150 approves only retro-reflective devices, and the bumper's specification lists no retro-reflector or retro-reflective marking. Its integrated lamps (front fog lamps and direction indicators) are light-emitting devices covered by other lighting regulations, not R150."
+   "reason": "The bumper contains fog lamps, direction indicators and parking sensors, but no retro-reflectors or retro-reflective marking are listed among its parts or functions. R150 approves only retro-reflective devices, so it does not apply unless a front retro-reflector were added to the bumper."
   },
   "UN R152": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "applies to the approval of vehicles of Category M1 and N1 with regard to an on-board system to (a) Avoid or mitigate the severity of a rear-end in lane collision...",
-   "reason": "R152 approves the vehicle's Advanced Emergency Braking System, which detects collisions and brakes automatically. The bumper's ultrasonic sensors serve only low-speed parking assistance, and no AEBS radar or camera is specified, so the product does not determine AEBS performance."
+   "reason": "R152 approves the vehicle's Advanced Emergency Braking System, which detects imminent forward collisions and brakes automatically. The bumper's ultrasonic sensors serve only parking assistance, and the specification names no AEBS radar or camera in the bumper, so the product does not determine AEBS performance."
   },
   "UN R155": {
    "applies": "maybe",
    "basis": "vehicle_system",
    "functions_covered": [
-    "parking-assist obstacle detection (ultrasonic sensors interfacing with parking-assist control unit)",
-    "wiring harness connection to vehicle electrical system"
+    "parking-assist obstacle detection (ultrasonic sensors interfacing with the parking-assist control unit)",
+    "wiring harness / electrical interfaces to vehicle electronics"
    ],
    "scope_evidence": "This Regulation applies to vehicles, with regard to cyber security, of the Categories M and N.",
-   "reason": "R155 approves the M1 vehicle type and the manufacturer's CSMS, not components. The bumper's ultrasonic sensors and harness connect to the parking-assist ECU, so they may fall within the OEM's vehicle threat analysis and supplier risk management (e.g. sensor spoofing), but whether they carry requirements depends on the vehicle architecture."
+   "reason": "R155 approves the whole M1 vehicle type for cyber security, not components. The bumper's ultrasonic sensors and lamps connect to vehicle control units, so they may fall within the vehicle manufacturer's risk assessment and supply-chain requirements, but the passive mechanical parts are not affected and it is unclear whether the sensors communicate digitally."
   },
   "UN R156": {
    "applies": "maybe",
    "basis": "vehicle_system",
    "functions_covered": [
-    "parking-assist obstacle detection (ultrasonic sensor firmware, if updatable)"
+    "parking-assist obstacle detection (ultrasonic sensors, if they carry updatable software/firmware)"
    ],
    "scope_evidence": "This Regulation applies to vehicles of Categories M, N, O, R, S and T that permit software updates.",
-   "reason": "R156 approves the vehicle's software update management, not bumpers or lamps. It could reach this product only if the ultrasonic parking sensors (or lamp electronics) carry firmware that the vehicle can update. The specification does not say whether such updatable software exists."
+   "reason": "R156 approves the vehicle and the manufacturer's software update management system, not hardware components such as the bumper structure or lamps. It would only reach this product if the ultrasonic sensors (or other electronics) contain software updatable within the vehicle, which the specification does not state."
   },
   "UN R157": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the type approval of vehicles of Category M and N1 with regards to their Automated Lane Keeping System.",
-   "reason": "R157 approves the vehicle's automated lane keeping system (control logic, OEDR, HMI, data storage). The bumper's direction indicators are only activated by ALKS, and its ultrasonic parking sensors are not part of the ALKS sensing system, so the bumper does not determine ALKS performance."
+   "reason": "R157 approves vehicles for their ALKS. The bumper's ultrasonic parking sensors serve low-speed parking assistance, not ALKS environment sensing. Mentions of direction indicators only concern how the ALKS activates existing lamps, which does not make the regulation apply to the lamps themselves."
   },
   "UN R161": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "Approval of a vehicle of category M1 and N1 with regard to its devices to prevent unauthorized use.",
-   "reason": "R161 covers anti-theft and immobilising devices (steering, gearbox locks, immobilisers). The front bumper's functions are impact protection, styling, lamps and parking sensors, none of which is a device to prevent unauthorized use."
+   "reason": "R161 covers anti-theft devices such as steering, gearbox and immobiliser locking. The front bumper's functions (impact absorption, styling, lamps, parking sensors) include no device to prevent unauthorized use, so the regulation concerns other systems."
   },
   "UN R162": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "Approval of immobilizers which are intended to be permanently fitted to vehicles of any category ... Approval of vehicles of category M1 ... with regard to their immobilizer(s).",
-   "reason": "The front bumper contains no immobilizer function or part, and it does not determine the vehicle's immobilizer performance. The direction indicator mention concerns only the optional use of lamps for status indication, which is not a requirement on the bumper."
+   "scope_evidence": "Approval of immobilizers which are intended to be permanently fitted to vehicles ... Approval of vehicles of category M1 ... with regard to their immobilizer(s).",
+   "reason": "The front bumper contains no immobilizer function or component. The use of direction indicators as an optional immobilizer status signal only constrains the immobilizer, not the lamps themselves."
   },
   "UN R163": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "Approval of Vehicle Alarm Systems (VAS) which are intended to be permanently fitted to vehicles of any category... Approval of vehicles of category M1 ... with regard to their alarm system(s).",
-   "reason": "R163 approves vehicle alarm systems and vehicles with regard to their alarm systems. The bumper is not part of an alarm system. The direction indicators may be used by an alarm as an optical signal, but this is a requirement on the alarm system, not on the lamps or the bumper."
+   "scope_evidence": "Approval of Vehicle Alarm Systems (VAS) which are intended to be permanently fitted to vehicles of any category... Approval of vehicles of category M1... with regard to their alarm system(s).",
+   "reason": "R163 approves vehicle alarm systems, and the bumper contains no alarm control unit, sensor or siren. The mentions of direction indicators only allow the alarm to flash the vehicle's existing lamps as an optical signal; they set no requirements for the bumper's lamps, sensors or structure."
   },
   "UN R164": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to new studded pneumatic tyres of Classes C1, C2 and C3 with regard to their snow performance.",
-   "reason": "R164 approves studded tyres for snow performance. The front bumper assembly contains no tyres and does not determine tyre performance, so the regulation does not apply. The 'structure' mentions refer to tyre structure, not bumper structure."
+   "reason": "UN R164 covers only studded tyres and their snow performance. The front bumper assembly contains no tyres, and the regulation does not concern any of its functions or parts."
   },
   "UN R171": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "applies to the type approval of vehicles of Categories M and N2 with regard to their Driver Control Assistance Systems (DCAS)",
-   "reason": "R171 approves vehicle-level DCAS (sustained longitudinal/lateral control assistance). The direction-indicator mentions only concern the system's use of indicators during manoeuvres, and parking-assist ultrasonic sensors are not a DCAS. The bumper therefore neither determines DCAS performance nor is a device approved under it."
+   "reason": "R171 approves vehicles for DCAS, which provides sustained longitudinal and lateral driving assistance. The bumper's ultrasonic parking-assist sensors are not part of such a system. The direction indicators are only activated by DCAS during manoeuvres, which places no requirements on the lamps themselves."
   },
   "UN R174": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to all seating positions in vehicles of categories M and N fitted with safety belt with regard to safety-belt reminders.",
-   "reason": "UN R174 concerns safety-belt reminder systems for seating positions. A front bumper assembly, with its lamps and parking sensors, has no role in safety-belt reminders."
+   "reason": "R174 concerns safety-belt reminder systems for seating positions. A front bumper assembly, including its lamps and parking sensors, has no role in belt reminders."
   },
   "UN R175": {
    "applies": "maybe",
@@ -439,8 +440,8 @@
     "parking-assist obstacle detection",
     "Ultrasonic parking sensors"
    ],
-   "scope_evidence": "applies to the type approval of vehicles of Category M1 equipped with automatic transmission with regard to their Acceleration Control for Pedal Error systems (ACPE) ... means of forward and/or rear detection",
-   "reason": "ACPE must detect obstacles 1.0–1.5 m in front of the vehicle, and front-bumper ultrasonic sensors are a typical forward detection means. If the M1 vehicle's ACPE uses these sensors, the bumper directly determines system performance. The specification does not say whether the vehicle has ACPE or an automatic transmission, or whether ACPE uses these sensors."
+   "scope_evidence": "applies to the type approval of vehicles of Category M1 equipped with automatic transmission with regard to their Acceleration Control for Pedal Error systems (ACPE)... means of forward and/or rear detection",
+   "reason": "ACPE must detect obstacles 1.0–1.5 m in front of the vehicle, and the bumper's front ultrasonic sensors are a typical forward-detection means, so they could determine ACPE performance. The specification does not say whether the vehicle has ACPE or automatic transmission, or whether these parking-assist sensors feed it, so applicability is uncertain."
   },
   "UN GTR 9": {
    "applies": "yes",
@@ -448,11 +449,12 @@
    "functions_covered": [
     "pedestrian lower-leg impact protection",
     "Energy absorber",
+    "Bumper beam (reinforcement)",
     "Bumper cover (fascia)",
-    "Bumper beam (reinforcement)"
+    "Lower grille"
    ],
    "scope_evidence": "This global technical regulation (gtr) shall apply to the frontal surfaces of power driven vehicles of category 1-1 with a gross vehicle mass exceeding 500 kg",
-   "reason": "GTR 9 assesses the vehicle's frontal surfaces for pedestrian protection, with dedicated bumper provisions (bumper beam definition, bumper test area, and lower legform impact tests using the FlexPLI). The bumper's EPP energy absorber, fascia and beam directly determine the outcome of the lower-leg tests for M1 (category 1-1) vehicles."
+   "reason": "GTR 9 governs the pedestrian protection performance of the vehicle front, including dedicated bumper provisions: a bumper test area, a bumper beam definition and lower legform impact tests. The front bumper's EPP absorber, beam and fascia directly determine lower-leg impact results for M1 (category 1-1) vehicles."
   }
  },
  "superseded": {
@@ -463,72 +465,72 @@
   "UN GTR 9": {
    "regulation": "UN GTR 9",
    "include": false,
-   "reason": "GTR 9 is a Global Technical Regulation under the 1998 Agreement. Its pedestrian bumper/lower-leg provisions are transposed into UN R127, which is already included. Citing both would duplicate the same legform test requirements. Revisit only if a market applying GTR 9 directly (not via R127) is targeted."
+   "reason": "GTR 9 is a global technical regulation under the 1998 Agreement, not a UN Regulation for type approval. Its pedestrian bumper and lower-legform provisions are transposed into UN R127, which is kept. Citing both would duplicate the same lower-leg requirements, so R127 is cited instead."
   },
   "UN R10": {
    "regulation": "UN R10",
    "include": true,
-   "reason": "The bumper contains electronic sub-assemblies fitted to an M1 vehicle: ultrasonic parking sensors, LED fog and direction indicator lamps with drivers, and the harness. R10 sets emission and immunity requirements for such ESAs, and the direction indicator is an immunity-related function."
+   "reason": "The bumper contains electronic sub-assemblies: LED fog lamps, LED direction indicators, ultrasonic parking sensors and their harness. These are ESAs subject to R10 emission and immunity requirements for M1 vehicles."
   },
   "UN R127": {
    "regulation": "UN R127",
    "include": true,
-   "reason": "Applies to M1 vehicles. It has bumper-specific provisions (bumper beam definition, bumper test area, lower legform impact tests), which the fascia, EPP energy absorber and beam directly determine."
+   "reason": "R127 approves M1 vehicles for pedestrian protection. It has dedicated bumper provisions (bumper test area, bumper beam definition, lower legform impact). The fascia, EPP absorber and beam directly determine the result."
   },
   "UN R128": {
    "regulation": "UN R128",
    "include": false,
-   "reason": "R128 approves only replaceable LED light sources of the Annex 1 categories. The specification describes integrated LED fog and indicator lamps, not lamps with replaceable LED sources, so the link is speculative. Re-add only if the lamp design adopts R128-category replaceable LED light sources."
+   "reason": "R128 applies only to replaceable LED light sources of Annex 1 categories. The specification describes integrated LED lamps and gives no indication of replaceable R128 light sources, so including it would rest on an unsupported assumption."
   },
   "UN R137": {
    "regulation": "UN R137",
    "include": false,
-   "reason": "Whole-vehicle full-width frontal crash occupant-restraint regulation with no provisions written for bumpers. The beam only indirectly influences the crash pulse, and compliance rests on the body structure and restraints."
+   "reason": "R137 approves the occupant restraint system in a full-width frontal impact. It has no bumper-specific provisions, and the beam's influence on the crash pulse is indirect, so it concerns another vehicle system."
   },
   "UN R148": {
    "regulation": "UN R148",
    "include": true,
-   "reason": "The bumper integrates LED front direction indicator lamps, a device type approved under R148 (replaces R6). The lamps need R148 device approval: photometry, colour, markings."
+   "reason": "The bumper integrates front direction indicator lamps, a device type approved under R148, which replaces R6. R148 sets photometric, colour and other device requirements for these lamps."
   },
   "UN R149": {
    "regulation": "UN R149",
    "include": true,
-   "reason": "The bumper integrates LED front fog lamps for an M1 vehicle. Front fog lamps are a device type approved under R149 (replaces R19)."
+   "reason": "The bumper integrates front fog lamps for an M1 vehicle, a device type approved under R149, which replaces R19. R149 sets photometric and other device requirements for these lamps."
   },
   "UN R155": {
    "regulation": "UN R155",
    "include": false,
-   "reason": "Approves the vehicle's cyber security management system, not components. Linking ultrasonic sensors to it depends on unstated vehicle architecture, so the link is speculative. Any requirements would come via the OEM supplier agreement, not this regulation."
+   "reason": "R155 is a vehicle-level cyber security and CSMS approval with no component provisions. Any link via the parking sensors is speculative, since digital communication is not stated."
   },
   "UN R156": {
    "regulation": "UN R156",
    "include": false,
-   "reason": "Approves the vehicle's software update management. The spec states no updatable firmware in the sensors or lamps, so the link is speculative."
+   "reason": "R156 is a vehicle-level software update management approval. Updatable software in the sensors or lamps is not stated, so the link is speculative."
   },
   "UN R175": {
    "regulation": "UN R175",
    "include": false,
-   "reason": "ACPE applies only to automatic-transmission M1 vehicles equipped with ACPE. The spec does not state that the vehicle has ACPE or that these sensors serve it. The parking sensors are specified only for parking assistance, so the link is speculative."
+   "reason": "R175 applies only if the vehicle has ACPE with automatic transmission and the parking sensors feed that system. None of this is stated, so the link is speculative and concerns another vehicle system."
   },
   "UN R26": {
    "regulation": "UN R26",
    "include": true,
-   "reason": "The M1 external projections regulation has dedicated provisions for bumpers (para 6.5: bumper ends, cover, parts on the bumper) and for grilles and gaps (para 6.3). The bumper cover, lower grille and the lamps/sensors mounted in it directly determine compliance."
+   "reason": "R26 governs the external projections of M1 vehicles. It contains dedicated provisions for bumpers (6.5) and grilles (6.3), which apply directly to the fascia, bumper ends and lower grille."
   },
   "UN R42": {
    "regulation": "UN R42",
    "include": true,
-   "reason": "Approves M1 front and rear protective devices (bumpers) for low-speed collision behaviour. The beam, absorber, cover and mountings directly determine the 4 km/h longitudinal and corner impact test results."
+   "reason": "R42 approves the low-speed collision behaviour of the M1 front protective device, which is this bumper. The beam, absorber, cover and mountings determine compliance."
   },
   "UN R48": {
    "regulation": "UN R48",
    "include": true,
-   "reason": "Installation regulation that lists front fog lamps and front direction indicators. It sets their number, position, mounting heights and spacing, geometric visibility, orientation and switching, which the bumper's lamp positions must satisfy."
+   "reason": "R48 is the installation regulation listing front fog lamps and front direction indicators. The bumper determines their mounting height, spacing, geometric visibility and orientation."
   },
   "UN R94": {
    "regulation": "UN R94",
    "include": false,
-   "reason": "Whole-vehicle offset frontal crash occupant-protection regulation with no provisions written for bumpers. The beam's influence on the result is indirect, and compliance rests on the body structure and restraint systems."
+   "reason": "R94 is a whole-vehicle frontal offset occupant protection approval with no bumper-specific provisions. The beam's contribution to the load path is indirect and concerns the vehicle structure and restraint systems."
   }
  },
  "selected": [

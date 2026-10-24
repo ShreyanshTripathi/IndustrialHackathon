@@ -22,10 +22,12 @@ from pipeline.extract import extract_all
 from pipeline.graph import DATA, Graph
 from pipeline.profile import ProductProfile, analyse
 from pipeline.sections import choose_all
-from pipeline.verify import KEEP, kept, verify
+from pipeline.rank import rank
+from pipeline.verify import KEEP, dedup, kept, verify
 from pipeline.select_regs import select
 
 ROOT = Path(__file__).resolve().parent.parent
+RANK_MIN = 20  # paragraph-ranker cut-off: below it the hit rate (6%) is under the F2 break-even (~12%); dev-measured
 STAGES = ("profile", "regulations", "sections", "requirements", "verified")
 
 
@@ -101,7 +103,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     print("⑤ extractors")
-    reqs = _stage(out, "04_requirements.json", args.resume, lambda: extract_all(profile, g, sections))
+    reqs = _stage(out, "04_requirements.json", args.resume, lambda: extract_all(profile, g, sections, case_dir.name))
     print(f"  {len(reqs)} requirements: {dict(collections.Counter(r['source']['regulation'] for r in reqs))}")
     if args.stop_after == "requirements":
         print(llm.summary())
@@ -113,6 +115,15 @@ def main(argv: list[str] | None = None) -> int:
     print(f"  low traceability (<50% shared wording with source): {sum(r['trace'] < 50 for r in reqs)}")
     reqs = kept(reqs)
     print(f"  kept {len(reqs)} ({', '.join(sorted(KEEP))})")
+
+    print("⑥b paragraph ranker and de-duplication")
+    reqs = _stage(out, "06_ranked.json", args.resume, lambda: rank(profile, g, reqs, case_dir.name))
+    n = len(reqs)
+    reqs = [r for r in reqs if r["para_score"] >= RANK_MIN]
+    print(f"  ranker: kept {len(reqs)} of {n} (paragraph score >= {RANK_MIN})")
+    n = len(reqs)
+    reqs = dedup(reqs)
+    print(f"  de-duplication: kept {len(reqs)} of {n}")
     submission = {
         "team_id": args.team_id,
         "case_id": case_dir.name,

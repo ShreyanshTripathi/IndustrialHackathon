@@ -1,124 +1,104 @@
 {
  "product_name": "Rear Lamp",
- "product_type": "Rear combination lamp: an exterior lighting and signalling module that combines rear position, stop and reversing lamp functions with a retro-reflector behind one outer lens in a single housing.",
+ "product_type": "Rear combination lamp: exterior lighting and signalling module combining rear position, stop and reversing lamp functions with an integrated retro-reflector, outer lens and housing",
  "vehicle_categories": [
   "M1"
  ],
- "mounting_location": "Vehicle rear, outboard corner (body-mounted rear lamp cluster). The drawing shows a single-side (handed) unit; the mirrored opposite-side unit is presumed.",
+ "mounting_location": "Vehicle rear. The spec does not state the exact position; outboard placement at the rear corners (left and right) is inferred from the drawing callout 'reversing lamp visible to 45° outboard'.",
  "functions": [
   {
    "name": "rear position lamp (presence/visibility signalling)",
-   "description": "Emits red light to the rear to indicate the vehicle's presence and width."
+   "description": "Emits red light to the rear to indicate the vehicle's presence and width. Drawing callout gives 4 to 17 cd on axis, shaped by the metallised reflector."
   },
   {
    "name": "stop lamp (braking indication)",
-   "description": "Emits higher-intensity red light to the rear when the service brake is applied."
+   "description": "Emits higher-intensity red light to the rear when the service brake is applied. Drawing callout gives 60 to 185 cd on axis from the LED modules on the PCB."
   },
   {
    "name": "reversing lamp (reversing illumination)",
-   "description": "Emits white light to the rear to illuminate the area behind the vehicle and warn others that the vehicle is reversing or about to reverse."
+   "description": "Illuminates the area behind the vehicle and warns other road users when reverse gear is engaged. Drawing callout requires the lamp to be visible up to 45° outboard."
   },
   {
-   "name": "retro-reflection (passive conspicuity)",
-   "description": "Reflects incident light back towards its source through moulded prism optics, so the vehicle is visible when unlit."
+   "name": "rear retro-reflector (passive conspicuity)",
+   "description": "Returns incident light from following vehicles' headlamps using moulded prism optics, without needing power. Drawing callout specifies reflectivity at 5° angle of incidence."
   },
   {
    "name": "light transmission and colour definition (outer lens)",
-   "description": "The outer lens transmits and filters light to the required colour and protects the internal optics from the environment."
+   "description": "Red-tinted, UV-stabilised outer lens that transmits the lamp output and sets the signal colour within the chromaticity limits. It also protects and closes the optical unit."
   }
  ],
  "parts": [
   {
-   "name": "Housing",
-   "role": "Main body carrying the optics, light sources and lens; it is the structure that mounts to the vehicle.",
-   "material": "PP or ASA/PC",
-   "electrical": false
-  },
-  {
-   "name": "Rear position lamp",
-   "role": "Light function module producing rear position light.",
-   "material": "LED modules on PCB",
-   "electrical": true
-  },
-  {
-   "name": "Stop lamp",
-   "role": "Light function module producing braking indication light.",
-   "material": "LED modules on PCB",
-   "electrical": true
-  },
-  {
-   "name": "Reversing lamp",
-   "role": "Light function module producing white reversing light.",
-   "material": "LED modules on PCB",
-   "electrical": true
-  },
-  {
-   "name": "Reflector surface (LED reflector cups / reversing reflector)",
-   "role": "Collects and directs the LED light output; the drawing shows an array of 24 cup reflectors and a faceted reflector in the reversing compartment.",
-   "material": "PC with aluminium vacuum-metallised coating",
-   "electrical": false
-  },
-  {
-   "name": "Retro-reflector",
-   "role": "Passive reflective device for conspicuity.",
-   "material": "PMMA (moulded prism optics)",
-   "electrical": false
-  },
-  {
    "name": "Outer lens",
-   "role": "Closes the housing, defines the emitted colour and protects the internals.",
+   "role": "Closes the lamp, transmits light and defines the red signal colour within chromaticity limits",
    "material": "PMMA (red-tinted, UV-stabilised)",
    "electrical": false
   },
   {
-   "name": "Reversing lamp window/insert in outer lens",
-   "role": "Separately framed, vertically fluted optical area of the lens positioned over the reversing compartment.",
-   "material": "",
+   "name": "Retro-reflector",
+   "role": "Passive rear reflex reflector element for conspicuity",
+   "material": "PMMA (moulded prism optics)",
    "electrical": false
   },
   {
    "name": "Seal / gasket",
-   "role": "Seals the lens to the housing against water and dust ingress.",
+   "role": "Seals lens to housing to prevent water and dust ingress (no water ingress after spray test)",
    "material": "TPE or silicone",
    "electrical": false
   },
   {
+   "name": "Reflector",
+   "role": "Optical carrier with multiple cavities that shapes and directs LED light for the rear position, stop and reversing functions",
+   "material": "PC with aluminium vacuum-metallised coating",
+   "electrical": false
+  },
+  {
+   "name": "LED modules on PCB",
+   "role": "Light sources for the lamp functions (stop lamp 60 to 185 cd on axis) and electrical carrier",
+   "material": "",
+   "electrical": true
+  },
+  {
+   "name": "Housing",
+   "role": "Main structural body carrying all internal components and providing the mounting points to the vehicle body",
+   "material": "PP or ASA/PC",
+   "electrical": false
+  },
+  {
    "name": "Fasteners / clips",
-   "role": "Retain the lamp to the vehicle body and/or hold the internal assemblies.",
+   "role": "Attach the lamp to the vehicle and keep it aimed under vibration",
    "material": "PA, POM, or steel",
    "electrical": false
   }
  ],
  "electronics": [
-  "LED light sources mounted on PCB(s) for the rear position, stop and reversing functions",
-  "Drawing: a 3 x 8 array of LED reflector cups (24 positions)",
-  "Drawing: a row of 8 small circular elements above the cup array, possibly additional LEDs",
-  "Drawing: a round light-source element at the top of the reversing compartment",
-  "Internal wiring and electrical connector to the vehicle harness (implied; not shown)"
+  "LED light sources (array of LED modules) for the stop lamp function",
+  "LED light sources for the rear position lamp and reversing lamp functions (spec states LED modules on PCB as the light source)",
+  "Printed circuit board carrying the LEDs",
+  "Electrical connector/terminal block on the PCB, inferred from the drawing (striped element), for the vehicle wiring harness connection"
  ],
  "vehicle_interfaces": [
-  "Mechanical attachment to the rear body panel/aperture via fasteners or clips",
-  "Electrical connection to the vehicle wiring harness to receive switched signals: position/tail lamp, brake signal and reverse gear signal",
-  "Outer lens surface flush with the rear body styling; seal against the body or housing"
+  "Mechanical attachment to the rear vehicle body by three threaded fasteners/studs projecting from the housing rear (drawing), using the housing mounting bosses",
+  "Electrical connection to the vehicle wiring harness via a PCB connector, switched by the lighting switch (position), brake signal (stop) and reverse gear signal (reversing)",
+  "Perimeter seal between lens and housing; possibly also a body-side interface"
  ],
  "drawing_observations": [
-  "Upper view shows the housing interior with the lens removed; lower view shows the outer lens.",
-  "Left section contains three horizontal rows of 8 metallised reflector cups (24 total), arranged in stepped tiers.",
-  "A row of 8 small circular features in individual partitioned cells sits above the cup rows; these may be LEDs, light-guide inputs or screw bosses.",
-  "A blank rectangular compartment in the centre of the housing may house the retro-reflector or another optical element.",
-  "An elongated, tapered recessed channel along the upper edge of the housing has no evident light source in it.",
-  "Right-lower section has a separate square compartment with a curved faceted (multi-segment) reflector and a semicircular light-source element at the top, consistent with the reversing lamp.",
-  "The outer lens has a distinct, separately bordered rectangular insert with vertical flutes at its lower right, aligned with the reversing compartment.",
-  "The diagonal hatch lines on the lens indicate a smooth transparent surface.",
-  "The drawing shows no PCB, connector, seal, fasteners or mounting points."
+  "The outer lens shows a separate rectangular window region at its upper outboard end, distinct from the main lens area, likely the reversing lamp or retro-reflector viewing zone.",
+  "The retro-reflector is drawn as a separate prism-pattern insert placed between the outer lens and the seal.",
+  "The reflector is segmented: rows of circular LED cavities (likely stop/position), a separate rectangular cavity and a grid-type optical section, indicating separate optical chambers per function.",
+  "The PCB carries a dense LED array in rows plus a separate larger square component (possibly the reversing lamp LED or a light-source module) and a striped connector-like element.",
+  "The housing shows four corner bosses/holes for internal assembly of the PCB/reflector stack.",
+  "Three fasteners (screw/stud type) are shown for vehicle mounting; the spec allows clips too.",
+  "The spec does not list a seal, PCB, reflector, housing or fasteners as main parts, but the drawing and materials table include them.",
+  "Drawing callouts are requirement statements, not part descriptions; some are attached to unrelated parts (e.g. the reversing lamp 45° outboard visibility callout points to the housing)."
  ],
  "uncertainties": [
-  "The spec labels the material table as representative values to be confirmed against the actual bill of materials.",
-  "The outer lens is specified as red-tinted, yet the reversing lamp must emit white light; the colour of the fluted reversing window (assumed clear) is not stated.",
-  "The location of the retro-reflector in the assembly is not identifiable from the drawing (it could be the central rectangular compartment or a lens-integrated area).",
-  "The assignment of the cup rows and small circular elements to the position and stop functions is not specified; the two functions may share the same LEDs at different intensities.",
-  "The function of the elongated upper channel is unclear; it may be a light guide or a purely styling feature.",
-  "The number of LEDs, the PCB layout, the connector type and the operating voltage are not specified.",
-  "The mounting method, the fastening points and the vehicle side (left or right) are not specified."
+  "How the reversing lamp produces white light given a red-tinted lens: a clear/white lens section or separate window is likely, given the distinct lens region in the drawing, but the spec does not state it.",
+  "Exact mounting location (body-side vs. tailgate/split lamp, left/right pair) is not stated in the spec.",
+  "Whether the rear position and stop functions share the same LEDs at different intensities or use separate LED groups is not stated.",
+  "Presence of driver electronics on the PCB (resistors, current regulation, failure monitoring) and the connector type are not specified.",
+  "Materials are stated as representative values with alternatives (housing PP or ASA/PC, seal TPE or silicone, fasteners PA/POM/steel); final choices await the actual bill of materials.",
+  "Whether the retro-reflector is a separate insert or moulded into the outer lens; the drawing shows a separate part.",
+  "Lamp dimensions, lit areas and mounting height/position on the vehicle are not given."
  ]
 }

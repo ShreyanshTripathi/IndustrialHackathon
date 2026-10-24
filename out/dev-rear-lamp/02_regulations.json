@@ -4,130 +4,126 @@
    "applies": "yes",
    "basis": "device_approval",
    "functions_covered": [
-    "retro-reflection (passive conspicuity)",
+    "rear retro-reflector (passive conspicuity)",
     "Retro-reflector",
-    "Outer lens (light transmission over retro-reflector area)"
+    "Outer lens (light-transmitting part covering the retro-reflector, colour)"
    ],
    "scope_evidence": "This Regulation applies to retro-reflecting devices for vehicles of categories L, M, N, O, and T",
-   "reason": "The lamp integrates a PMMA prism retro-reflector for M1 vehicles, which is a retro-reflecting device approved under R3. R3 also explicitly covers retro-reflectors grouped or reciprocally incorporated with signalling lamps."
+   "reason": "The rear lamp integrates a rear retro-reflector with moulded prism optics on an M1 vehicle, which is a device type approved under R3. R3 also provides for retro-reflectors grouped or reciprocally incorporated with signalling lamps."
   },
   "UN R6": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to direction indicators for vehicles of categories L, M, N, O, and T.",
-   "reason": "The rear lamp combines rear position, stop and reversing lamps with a retro-reflector, but it has no direction indicator function. R6 approves only direction indicators, so it does not apply."
+   "reason": "The rear lamp combines rear position, stop and reversing lamps plus a retro-reflector, with no direction indicator function. R6 approves only direction indicators, so it does not apply."
   },
   "UN R7": {
    "applies": "yes",
    "basis": "device_approval",
    "functions_covered": [
-    "rear position lamp",
-    "stop lamp",
-    "outer lens (colour of light emitted)",
-    "LED light sources for position/stop functions"
+    "rear position lamp (presence/visibility signalling)",
+    "stop lamp (braking indication)",
+    "LED modules on PCB (light sources for position and stop functions)",
+    "outer lens (red colour of position/stop light)"
    ],
    "scope_evidence": "\"Front and rear position lamps, stop-lamps and end-outline marker lamps of different type\" means lamps which differ in such essential respects as...",
-   "reason": "UN R7 is the device approval regulation for rear position lamps and stop lamps, both of which are functions of this rear combination lamp, including provisions for reciprocally incorporated position/stop lamps. The reversing lamp and retro-reflector fall under other regulations."
+   "reason": "UN R7 approves rear position lamps and stop lamps as device types. This product's rear position lamp and stop lamp functions fall directly within that scope, including the provisions on reciprocally incorporated position/stop lamps (5.5.1, 6.2.4.2). The reversing lamp and the retro-reflector are covered by other regulations."
   },
   "UN R10": {
    "applies": "yes",
    "basis": "component_technology",
    "functions_covered": [
-    "LED light sources on PCBs for rear position, stop and reversing functions",
-    "Internal wiring and electrical connector to vehicle harness"
+    "LED modules on PCB",
+    "Printed circuit board / LED light sources for stop, rear position and reversing lamps",
+    "Electrical connector to vehicle harness"
    ],
-   "scope_evidence": "Components and separate technical units intended to be fitted in these vehicles with the limitation given in paragraph 3.2.1. with regard to electromagnetic compatibility.",
-   "reason": "The lamp contains LED modules on PCBs and may include LED drivers, making it an electrical/electronic sub-assembly (ESA) for M1 vehicles. R10 covers its emissions and the immunity of signalling functions (stop lamp, position lamp) whose disturbance could confuse other road users."
+   "scope_evidence": "Components and separate technical units intended to be fitted in these vehicles with the limitation given in paragraph 3.2.1. with regard to electromagnetic compatibility",
+   "reason": "The lamp contains LED modules on a PCB, which makes it an electrical/electronic sub-assembly (ESA) for M1 vehicles. R10 covers emissions and immunity of ESAs, and lighting and light-signalling devices are named among the immunity-related functions and information items."
   },
   "UN R13H": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation applies to the braking of vehicles of categories M1 and N1 ... 5.2.22.1: Activation of the service braking system by the driver shall generate a signal that will be used to illuminate the stop lamps.",
-   "reason": "R13H approves the vehicle braking system. Its stop-lamp provisions (5.2.22) only require the braking system to generate the activation signal and set no requirements for the lamp itself. The rear lamp does not determine braking performance, so R13H does not apply."
+   "scope_evidence": "This Regulation applies to the braking of vehicles of categories M1 and N1.",
+   "reason": "R13H approves the vehicle braking system. Its stop-lamp provisions (5.2.22) only require the braking system to generate the signal that lights the stop lamps; they set no requirements on the lamp itself. The rear lamp does not determine braking performance."
   },
   "UN R19": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to front fog lamps, which may incorporate lenses of glass or plastic material.",
-   "reason": "UN R19 approves only front fog lamps. The product is a rear combination lamp with rear position, stop and reversing lamps and a retro-reflector, and it has no front fog function, so the regulation does not cover it."
+   "reason": "UN R19 approves only front fog lamps. The product is a rear combination lamp (rear position, stop, reversing lamp and retro-reflector) with no front fog function, so the regulation concerns another device."
   },
   "UN R23": {
    "applies": "yes",
    "basis": "device_approval",
    "functions_covered": [
     "reversing lamp (reversing illumination)",
-    "Reversing lamp",
-    "Reversing lamp window/insert in outer lens",
-    "light transmission and colour definition (outer lens) for the reversing function"
+    "LED modules on PCB (light source modules for reversing function)",
+    "outer lens (white light colour for reversing section)"
    ],
-   "scope_evidence": "\"Reversing/manoeuvring lamps of different types\" means lamps which differ in such essential respects as... the characteristics of the optical system",
-   "reason": "UN R23 approves reversing lamps as devices. The product integrates a white reversing lamp function, which must meet R23's intensity, colour, marking and light source requirements, including the provisions for lamps sharing an outer lens."
+   "scope_evidence": "The device bearing the approval mark shown above is a reversing lamp approved ... pursuant to Regulation No. 23",
+   "reason": "The product integrates a reversing lamp function, which is the device type approved by UN R23 (intensity, white colour, light source module requirements). Note that R23 is being consolidated into UN R148, so approval may be granted under R148 instead."
   },
   "UN R26": {
-   "applies": "no",
-   "basis": "none",
-   "functions_covered": [],
-   "scope_evidence": "\"External surface\" means the outside of the vehicle including ... the lighting and light-signalling devices",
-   "reason": "R26 approves the M1 vehicle's exterior for external projections. Rear lamps fall only under its general external-surface requirements, and the only rear-lamp mention (2.7.4, rear position lamps) is a width-measurement definition rather than a dedicated provision for rear combination lamps; the regulation's lamp-specific rules concern headlamps."
+   "applies": "maybe",
+   "basis": "vehicle_system",
+   "functions_covered": [
+    "rear position lamp",
+    "outer lens / housing as part of the vehicle external surface"
+   ],
+   "scope_evidence": "2.3: \"External surface\" means the outside of the vehicle including ... the lighting and light-signalling devices; 2.7.4: Of side direction indicator lamps, end outline marker lamps, front and rear position (side) lamps and parking lamps",
+   "reason": "R26 applies to M1 external projections and names rear position lamps in a dedicated paragraph (2.7.4), but the excerpt does not show whether that paragraph sets requirements for rear lamps or exempts them, so whether the visible lamp exterior must meet projection/radius rules is uncertain."
   },
   "UN R32": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles of category M1 with regard to their behaviour in a rear-end collision.",
-   "reason": "UN R32 approves the whole M1 vehicle for its rear-end collision behaviour (passenger compartment integrity and seating). It has no provisions written for lamps or other lighting and signalling devices, and the rear lamp does not determine that performance."
+   "reason": "UN R32 approves the vehicle's structural behaviour in a rear-end collision and has no provisions for lamps, retro-reflectors or lighting components. The mentions concern only seating and H-point measurement, so the rear combination lamp is not part of the regulated system."
   },
   "UN R37": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to filament light sources and their LED replacement light sources shown in Annex 1 and intended for use in approved lamps",
-   "reason": "The rear lamp uses LED modules mounted on PCBs for all of its functions, not replaceable filament bulbs or Annex 1 LED replacement light sources. R37 therefore sets no requirements for this product's design."
+   "reason": "The rear lamp uses LED modules mounted on a PCB as its light sources, not replaceable filament bulbs or Annex 1 LED replacement light sources. R37 covers only those light sources, so the lamp falls outside its scope."
   },
   "UN R38": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "\"Rear fog lamps of different types\" means lamps which differ in such essential respects as...",
-   "reason": "UN R38 approves only rear fog lamps. This combination lamp provides rear position, stop and reversing functions plus a retro-reflector, with no rear fog lamp function, so the regulation does not cover any of its functions."
+   "reason": "UN R38 approves rear fog lamps only. This rear combination lamp provides rear position, stop and reversing functions plus a retro-reflector, with no rear fog lamp function, so R38 sets no requirements for it."
   },
   "UN R39": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the approval of vehicles of categories L, M and N with regard to speedometer and odometer equipment",
-   "reason": "UN R39 approves vehicles for their speedometer and odometer equipment. A rear combination lamp neither contains nor influences those systems, so the regulation concerns other systems."
+   "reason": "UN R39 covers speedometer and odometer equipment and its installation. A rear combination lamp has no speed-indication or odometer function, so the regulation concerns other systems."
   },
   "UN R40": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the emission of gaseous pollutants from positive-ignition engines of vehicles of categories L3, L4 and L5.",
-   "reason": "R40 covers exhaust emissions of L-category motorcycles. The product is a lighting and signalling rear lamp for M1 vehicles, so both the vehicle category and the subject matter fall outside its scope."
+   "reason": "UN R40 covers exhaust emissions of L-category motorcycles. It does not cover M1 vehicles or lighting and signalling devices; the mentions only match words like 'stop' and 'position' in unrelated contexts."
   },
   "UN R42": {
-   "applies": "yes",
-   "basis": "vehicle_system",
-   "functions_covered": [
-    "rear position lamp",
-    "stop lamp",
-    "reversing lamp",
-    "retro-reflector",
-    "outer lens",
-    "housing and mounting (post-impact integrity and visibility)"
-   ],
-   "scope_evidence": "6.1.1: The lighting and signalling devices shall continue to operate correctly and to remain visible.",
-   "reason": "R42 approves M1 vehicles for low-speed front and rear impacts, and paragraph 6.1.1 specifically requires lighting and signalling devices to keep working and stay visible after the test. This rear-corner lamp on an M1 vehicle must therefore keep its signalling functions, lens and mounting intact through the R42 impacts."
+   "applies": "no",
+   "basis": "none",
+   "functions_covered": [],
+   "scope_evidence": "applies to vehicles of category M1 with regard to the behaviour of their front and rear protective devices when involved in a collision at low speed",
+   "reason": "R42 approves the vehicle's bumpers/protective devices in low-speed impacts; the rear lamp is not a protective device. The only lamp-related provision (6.1.1) merely requires lighting devices to keep working after the impact test, which does not make R42 apply to the lamp."
   },
   "UN R43": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "to the exclusion of: (i) Glazing for lighting and light-signalling devices",
-   "reason": "UN R43 covers safety glazing used as windscreens, other panes and partitions, and its scope explicitly excludes glazing for lighting and light-signalling devices. That exclusion covers the rear lamp's outer lens, and the lamp contains no other vehicle glazing."
+   "reason": "R43 covers safety glazing used as windscreens, panes and partitions, and its scope explicitly excludes glazing for lighting and light-signalling devices. The rear lamp's outer lens is exactly such glazing, so the regulation does not apply."
   },
   "UN R48": {
    "applies": "yes",
@@ -136,187 +132,188 @@
     "rear position lamp",
     "stop lamp",
     "reversing lamp",
-    "retro-reflector",
-    "grouping/combination of functions in one housing",
-    "colour of emitted light"
+    "rear retro-reflector",
+    "outer lens colour (signal colour requirements)"
    ],
    "scope_evidence": "This Regulation applies to vehicles of categories M, N, and to their trailers (category O) with regard to the installation of lighting and light-signalling devices.",
-   "reason": "The product is a rear combination lamp for M1 vehicles. R48 sets the installation requirements for its rear position, stop and reversing lamps and its retro-reflector, covering position, colour, geometric visibility, grouping and electrical connections, so the lamp design must allow the vehicle to comply."
+   "reason": "The product is a rear combination lamp for M1 vehicles combining rear position, stop and reversing lamps and a retro-reflector. R48 sets installation requirements for these devices, including position, geometric visibility, colour and switching, which the lamp design must support."
   },
   "UN R49": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation shall apply to motor vehicles of categories M1, M2, N1 and N2 with a reference mass exceeding 2,610 kg ... (emissions of C.I. and P.I. engines)",
-   "reason": "UN R49 covers pollutant emissions from compression-ignition and gas-fuelled engines, and the vehicles fitted with them. A rear combination lamp is not an engine or emission-related component and does not affect emission performance."
+   "scope_evidence": "This Regulation shall apply to motor vehicles of categories M1, M2, N1 and N2 with a reference mass exceeding 2,610 kg ... Emissions of C.I. and P.I. (LPG and CNG) engines",
+   "reason": "UN R49 regulates pollutant emissions from heavy-duty compression- and positive-ignition engines and their OBD systems. A rear combination lamp is not part of the engine or emission-control system, so R49 sets no requirements for it."
   },
   "UN R51": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation contains provisions on the sound emitted by motor vehicles and applies to vehicles of categories M and N.",
-   "reason": "UN R51 approves vehicles for exterior sound emission, a vehicle property that a rear combination lamp does not determine. The regulation has no provisions for lighting or signalling devices; the mentions only touch on vehicle length, test paths and reversing operation conditions."
+   "reason": "UN R51 approves vehicles with respect to sound emission and contains no provisions for exterior lighting or signalling devices. The rear combination lamp neither emits sound nor determines the vehicle's sound performance, and the mentions only refer to vehicle dimensions or test paths."
   },
   "UN R53": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles of category L3 with regard to the installation of lighting and light-signalling devices.",
-   "reason": "UN R53 covers only the installation of lighting on L3 motorcycles. This rear lamp is for M1 vehicles, which fall outside its scope (M1 installation is covered by UN R48)."
+   "reason": "UN R53 covers lamp installation only on L3 motorcycles. The product is intended for M1 passenger cars, so this vehicle category is outside the regulation's scope."
   },
   "UN R62": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles of categories L1 to L7, if fitted with handlebars.",
-   "reason": "UN R62 covers anti-theft protective devices on handlebar-equipped L-category vehicles. The product is a rear combination lamp for M1 vehicles, so both the vehicle category and the system are outside its scope."
+   "reason": "UN R62 covers anti-theft protective devices (steering/transmission locks) on L-category vehicles with handlebars. The product is a rear combination lamp for M1 vehicles, so both its vehicle category and its system are outside the scope."
   },
   "UN R64": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the approval of vehicles of category M1 and N1 when equipped with: (a) A temporary use spare unit; and/or (b) Run-flat tyres and/or a run-flat system",
-   "reason": "UN R64 covers temporary-use spare units and run-flat tyres and systems. A rear combination lamp is not part of these systems, and the regulation has no provisions for lighting devices."
+   "reason": "UN R64 covers vehicles fitted with temporary-use spare units and run-flat tyres or systems. A rear combination lamp is not part of these systems, and the regulation has no provisions for lighting or signalling devices."
   },
   "UN R67": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "Approval of specific equipment of vehicles of category M and N1 using liquefied petroleum gases in their propulsion system",
-   "reason": "UN R67 covers LPG fuel system components and their installation. A rear combination lamp is not LPG equipment. The mentions of 'stop' refer to the 80 per cent stop valve and to engine stop phases, not to stop lamps."
+   "reason": "UN R67 covers LPG fuel system components and their installation. A rear combination lamp is not LPG equipment. The mentions of 'stop' and 'housing' refer to LPG valves and gas-tight housings, not lamps."
   },
   "UN R79": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the steering equipment of vehicles of Categories M, N and O.",
-   "reason": "UN R79 covers steering equipment and steering systems, not lighting or signalling devices. The rear combination lamp is not part of the steering system and does not determine its performance."
+   "reason": "UN R79 covers steering equipment and its control systems. A rear combination lamp is not part of the steering system and does not determine its performance."
   },
   "UN R83": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "type approval of motor vehicles with regard to crankcase emissions (Type 3 test) and exhaust emissions at low ambient temperature (Type 6 test)",
-   "reason": "UN R83 covers vehicle emissions, in-service conformity, on-board monitoring and related cybersecurity. It has no provisions for exterior lighting or signalling devices such as a rear combination lamp, and the mentions only match generic terms."
+   "reason": "UN R83 covers vehicle emissions, in-service conformity, on-board monitoring and cybersecurity for M1/N1 vehicles. It sets no requirements for rear lighting, signalling or retro-reflector devices, and a rear lamp does not determine any emission performance."
   },
   "UN R89": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "The purpose of this Regulation is to limit the road speed of vehicles by means of a vehicle system which has the primary function of controlling the fuel feed to the engine or via the engine management.",
-   "reason": "UN R89 covers speed limitation devices and functions acting on fuel feed or engine management. A rear combination lamp is a lighting and signalling device that does not affect speed limitation. The mentions of service braking and position only concern SLD braking and the location of the approval mark, not lamp functions."
+   "scope_evidence": "limit the road speed of vehicles by means of a vehicle system which has the primary function of controlling the fuel feed to the engine or via the engine management",
+   "reason": "UN R89 covers speed limitation devices (SLD/ASLD) and their installation, which control engine fuel feed. A rear combination lamp is not part of such a system, and the 'braking' and 'position' mentions refer to unrelated contexts."
   },
   "UN R92": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This UN Regulation applies to non-original replacement exhaust silencing systems for vehicles of categories L1, L2, L3, L4 and L5",
-   "reason": "UN R92 covers only replacement exhaust silencing systems for L-category vehicles. The product is a rear combination lamp for M1 vehicles, so both the device type and the vehicle category fall outside its scope."
+   "scope_evidence": "applies to non-original replacement exhaust silencing systems for vehicles of categories L1, L2, L3, L4 and L5",
+   "reason": "UN R92 covers replacement exhaust silencing systems for L-category vehicles. The product is a rear combination lamp for M1 vehicles, so both the device type and the vehicle category fall outside the scope."
   },
   "UN R94": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation applies to vehicles of category M1 of a total permissible mass not exceeding 2,500 kg (frontal collision protection)",
-   "reason": "UN R94 approves vehicles for occupant protection in a frontal collision. A rear combination lamp neither determines that performance nor is covered by any dedicated provision; the only lamp-related mention is the exclusion of side marker lamps from the vehicle width definition."
+   "scope_evidence": "This Regulation applies to vehicles of category M1 of a total permissible mass not exceeding 2,500 kg ... (frontal collision protection)",
+   "reason": "UN R94 approves vehicles for occupant protection in a frontal collision. It has no provisions for rear lighting or signalling devices or retro-reflectors. A rear combination lamp does not determine frontal crash occupant protection performance."
   },
   "UN R100": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "Safety requirements with respect to the electric power train of road vehicles ... Part II of this Regulation does not apply to a battery whose primary use is to supply power for ... lighting",
-   "reason": "UN R100 covers the high-voltage electric power train and the REESS. A low-voltage LED rear combination lamp is not part of these systems, and the lamp mentions in the regulation refer only to test signal lamps and tell-tales."
+   "scope_evidence": "Safety requirements with respect to the electric power train of road vehicles ... and the Rechargeable Electrical Energy Storage System (REESS)",
+   "reason": "UN R100 covers electric power train high-voltage safety and REESS, not lighting or signalling devices. The low-voltage LED rear lamp is not part of the electric power train, and the mentions of 'lamp' and 'stop' refer only to test equipment and probe stop faces."
   },
   "UN R101": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation applies to vehicles of categories M1 and N1 with regard to: (a) the measurement of the emission of carbon dioxide (CO2) and fuel consumption",
-   "reason": "R101 approves vehicles for CO2, fuel and electric energy consumption measurement. Its only lamp-related text is a test-condition setting for rear position lamps during dynamometer testing, which places no design requirements on the lamp itself."
+   "scope_evidence": "applies to vehicles of categories M1 and N1 with regard to: (a) the measurement of the emission of carbon dioxide (CO2) and fuel consumption and/or ... electric energy consumption and electric range",
+   "reason": "R101 approves vehicles for CO2, fuel consumption and electric energy consumption measurement. It does not approve rear lamps or set installation requirements for them. The only lamp mention is a test-condition setting for the rear position lamps during the CO2 test, which places no design requirement on the lamp."
   },
   "UN R102": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles of categories N2, N3, O3 and O4.",
-   "reason": "UN R102 approves close-coupling devices for heavy goods vehicles and trailers. The product is a rear combination lamp for M1 vehicles, so both its device type and its vehicle category fall outside the regulation's scope."
+   "reason": "UN R102 covers close-coupling devices for heavy goods vehicles and trailers (N2, N3, O3, O4). It does not cover lighting or signalling devices, and it excludes the M1 category this rear lamp is intended for."
   },
   "UN R103": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "type-approval, as separate technical units, of pollution control device to be fitted ... as replacement parts. Catalytic converters and particulate filters",
-   "reason": "UN R103 covers replacement catalytic converters and particulate filters for exhaust emission control. A rear combination lamp is a lighting and signalling device, so it is not covered."
+   "scope_evidence": "type-approval, as separate technical units, of pollution control device to be fitted ... as replacement parts. Catalytic converters and particulate filters shall be considered to be pollution control devices",
+   "reason": "UN R103 covers replacement exhaust pollution control devices such as catalytic converters and particulate filters. A rear combination lamp is a lighting and signalling device and contains no exhaust after-treatment component."
   },
   "UN R104": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to retro-reflective markings for vehicles of category M2, M3, N, O2, O3 and O4.",
-   "reason": "R104 approves retro-reflective marking materials (conspicuity tape) for heavy vehicles and trailers. It does not cover M1, and it does not cover prism retro-reflector devices, which are approved under R3 (now R150)."
+   "reason": "R104 approves retro-reflective marking materials (conspicuity tapes) only for M2, M3, N and O vehicles. The product is a rear combination lamp for M1 with a prism retro-reflector, not a marking material, and its vehicle category is outside the scope."
   },
   "UN R107": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to every single-deck, double-deck, rigid or articulated vehicle of category M2 or M3.",
-   "reason": "UN R107 covers only the general construction of M2 and M3 buses and coaches, while this rear lamp is intended for M1 vehicles. R107 also has no provisions for approving exterior signalling lamps."
+   "reason": "UN R107 covers the general construction of buses and coaches (M2/M3) only. This rear lamp is for M1 vehicles, which the scope does not include, and R107 does not approve exterior signalling lamps anyway."
   },
   "UN R114": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation applies to the following aftermarket equipment: to airbag modules for replacement airbag systems ... to replacement steering wheels ... equipped with an airbag module",
-   "reason": "UN R114 covers aftermarket airbag modules, replacement steering wheels and replacement airbag systems. A rear combination lamp is none of these, and it is not part of any such system."
+   "scope_evidence": "This Regulation applies to the following aftermarket equipment: to airbag modules for replacement airbag systems intended to be installed on motor vehicles; to replacement steering wheels...",
+   "reason": "UN R114 approves aftermarket airbag modules, replacement steering wheels and replacement airbag systems. It has no provisions for exterior rear lighting, signalling lamps or retro-reflectors."
   },
   "UN R116": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "Approval of a vehicle of category M1 and N1 with regard to its devices to prevent unauthorized use ... vehicle alarm systems ... immobilizers",
-   "reason": "R116 covers anti-theft devices, alarm systems and immobilizers. Its only references to lamps concern the alarm's optical signal using direction indicators or interior lights, and this rear lamp has no direction indicator or alarm function."
+   "scope_evidence": "Approval of a vehicle of category M1 and N1 with regard to its devices to prevent unauthorized use ... Approval of vehicle alarm systems (VAS) ... immobilizers",
+   "reason": "R116 covers anti-theft devices, alarm systems and immobilizers. The rear combination lamp is not part of these systems. The only lighting provisions concern alarm optical signals via direction indicators or interior lights and how the alarm system uses existing lamps, which places no requirements on this lamp's design."
   },
   "UN R123": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to adaptive front-lighting systems (AFS) for motor vehicles of categories M and N1.",
-   "reason": "R123 approves adaptive front-lighting systems that provide passing and driving beams. The product is a rear combination lamp with rear position, stop, reversing and retro-reflector functions, and none of these are front-lighting functions covered by R123."
+   "reason": "UN R123 approves adaptive front-lighting systems providing passing and driving beams. The product is a rear combination lamp (position, stop and reversing lamps plus a retro-reflector), and none of these is a front-lighting function covered by this regulation."
   },
   "UN R127": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "Legform test to bumper ... headform tests to bonnet top and windscreen (front-end pedestrian impact zones)",
-   "reason": "UN R127 approves the vehicle's front-end structure for pedestrian impact (bumper, bonnet, windscreen). A rear combination lamp at the vehicle's rear corner is outside every test area, and the regulation has no provisions for rear lamps."
+   "scope_evidence": "Legform test to bumper ... Windscreen test area ... type approval of a vehicle with regard to pedestrian protection",
+   "reason": "UN R127 approves the vehicle front structure (bumper, bonnet, windscreen) for pedestrian impact protection. A rear combination lamp is at the vehicle rear, outside the test zones, and the regulation has no provisions written for rear lamps."
   },
   "UN R128": {
-   "applies": "no",
-   "basis": "none",
-   "functions_covered": [],
-   "scope_evidence": "This Regulation applies to LED light sources shown in Annex 1 and intended for use in approved lamps",
-   "reason": "UN R128 approves only the standardised, replaceable LED light source categories listed in Annex 1 (e.g. LW1, LR2). The specification states that all functions use LED modules on PCBs, which are approved as part of the lamp itself rather than as R128 light-source categories."
+   "applies": "maybe",
+   "basis": "device_approval",
+   "functions_covered": [
+    "LED light sources for stop, rear position and reversing functions (only if a standardised Annex 1 category LED light source is used)"
+   ],
+   "scope_evidence": "This Regulation applies to LED light sources shown in Annex 1 and intended for use in approved lamps of power-driven vehicles",
+   "reason": "R128 approves only standardised, replaceable LED light source categories listed in Annex 1, such as LR or LW types. The spec describes LED modules soldered on a PCB, which are normally non-replaceable lamp-specific sources outside R128. It would apply only if a function, for example the separate square reversing-lamp source, used an R128 category light source, and the spec leaves this open."
   },
   "UN R131": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the approval of vehicles of Category M2, M3, N2 and N3 with regard to an on-board system to: (a) Avoid or mitigate the severity of a rear-end in lane collision",
-   "reason": "R131 approves advanced emergency braking systems on M2, M3, N2 and N3 vehicles. A rear combination lamp for M1 vehicles is outside that vehicle category, and the lamp is not part of an AEBS."
+   "reason": "R131 approves advanced emergency braking systems on heavy vehicles (M2, M3, N2, N3) and excludes the product's M1 category. A rear combination lamp is not part of an AEBS, so the regulation does not apply."
   },
   "UN R132": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This Regulation applies to Retrofit Emission Control devices (REC) to be installed: On category M2, M3 and N vehicles ... and their CI engines",
-   "reason": "R132 approves retrofit exhaust emission control devices for CI engines on M2, M3, N, T and non-road machinery. A rear combination lamp for M1 vehicles is neither an emission control device nor fitted to an in-scope vehicle category."
+   "scope_evidence": "This Regulation applies to Retrofit Emission Control devices (REC) to be installed: On category M2, M3 and N vehicles and their CI engines, excluding those vehicles approved according to Regulation No. 83",
+   "reason": "UN R132 approves retrofit exhaust emission control devices for compression-ignition engines and does not cover M1 vehicles. It has nothing to do with rear lighting or signalling lamps or retro-reflectors."
   },
   "UN R137": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles of category M1 and to vehicles of category N1 ... Restraint system in front impact",
-   "reason": "UN R137 approves vehicles with regard to occupant protection in a full-width frontal impact. It sets no requirements for rear lighting or signalling devices or retro-reflectors. Its only lighting mention is the exclusion of side marker lamps from the vehicle-width definition."
+   "reason": "R137 approves the vehicle's occupant restraint performance in a full-width frontal impact; a rear combination lamp neither forms part of the restraint system nor determines its performance, and the regulation has no lamp-specific provisions."
   },
   "UN R148": {
    "applies": "yes",
@@ -325,144 +322,150 @@
     "rear position lamp",
     "stop lamp",
     "reversing lamp",
-    "outer lens colour/light transmission"
+    "outer lens (colour/light transmission of the signalling functions)",
+    "LED light sources/light source modules"
    ],
    "scope_evidence": "This Regulation applies to the following light-signalling devices (lamps): ... Position lamps • Stop lamps ... Reversing lamps",
-   "reason": "The product's rear position, stop and reversing functions are lamp types approved under R148, including its provisions for reciprocally incorporated position/stop lamps. The retro-reflector is not covered by R148; it falls under R150."
+   "reason": "UN R148 is the device approval regulation for position, stop and reversing lamps, which are three functions of this rear combination lamp. The retro-reflector is not covered here because it falls under the retro-reflective devices regulation (R150)."
   },
   "UN R149": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the following road illumination devices (lamps): • Headlamps ... • Adaptive front-lighting systems (AFS) ... • Front fog lamps ... • Cornering lamps",
-   "reason": "R149 covers only front road illumination devices (headlamps, AFS, ADB, front fog and cornering lamps). Rear position, stop and reversing lamps and retro-reflectors are covered by R148 and R150, not by this regulation."
+   "reason": "R149 covers road illumination devices (headlamps, AFS, front fog and cornering lamps). The product's functions are rear position, stop, reversing and retro-reflector, which are light-signalling devices covered by other regulations (R148, R150). Its mentions of grouped or combined lamps only concern marking alongside signalling lamps."
   },
   "UN R150": {
    "applies": "yes",
    "basis": "device_approval",
    "functions_covered": [
-    "retro-reflection (passive conspicuity)",
-    "Retro-reflector",
-    "Outer lens (where it forms the retro-reflector front)"
+    "rear retro-reflector (passive conspicuity)",
+    "Retro-reflector (moulded prism optics)",
+    "Outer lens (where it covers/forms part of the retro-reflective device)"
    ],
    "scope_evidence": "This Regulation applies to retro-reflective devices as: • Retro-reflectors of the Classes IA, IB, IIIA, IIIB and IVA",
-   "reason": "The rear lamp incorporates a retro-reflector, which is a device type approved under R150 (Class IA/IB for M1 rear). R150 also has explicit provisions for retro-reflectors reciprocally incorporated or grouped with signalling functions."
+   "reason": "The lamp integrates a red rear retro-reflector with moulded prism optics, which is a retro-reflector device type approved under R150. R150 also explicitly covers retro-reflectors installed as an integral part of a lamp and those grouped with signalling functions."
   },
   "UN R152": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "applies to the approval of vehicles of Category M1 and N1 with regard to an on-board system to (a) Avoid or mitigate the severity of a rear-end in lane collision",
-   "reason": "R152 approves the vehicle's Advanced Emergency Braking System. A rear combination lamp neither forms part of that system nor determines its performance. The stop lamp only signals braking; it plays no role in detecting collisions or demanding braking."
+   "scope_evidence": "approval of vehicles of Category M1 and N1 with regard to an on-board system to (a) Avoid or mitigate the severity of a rear-end in lane collision",
+   "reason": "R152 approves the vehicle's Advanced Emergency Braking System. A rear combination lamp is not part of that system and does not determine its performance. The mentions of braking concern AEBS braking demand, not stop lamp signalling."
   },
   "UN R155": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles, with regard to cyber security, of the Categories M and N.",
-   "reason": "UN R155 approves the vehicle type and the manufacturer's cyber security management system; it does not approve lighting devices. This rear lamp only receives switched position, brake and reverse signals and has no stated ECU or data interface, so it does not determine the vehicle's cyber security performance."
+   "reason": "UN R155 approves the vehicle type and the manufacturer's cyber security management system, not individual components. This rear lamp is a passive LED signalling module with no stated electronic control unit, software or communication interface, so it is not a device or system that the regulation approves or that its requirements target."
   },
   "UN R156": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to vehicles of Categories M, N, O, R, S and T that permit software updates.",
-   "reason": "UN R156 approves the vehicle's software update management system. The rear lamp is a simple LED lighting module with no stated software or updatable ECU, so it neither determines nor forms part of that system."
+   "reason": "R156 approves the vehicle's software update management system. The rear lamp is a passive LED lighting module with no stated software or update capability, so it is not part of the system this regulation covers."
   },
   "UN R157": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to the type approval of vehicles of Category M and N1 with regards to their Automated Lane Keeping System.",
-   "reason": "R157 approves the Automated Lane Keeping System, an automated driving control system. A rear combination lamp is not part of ALKS, and R157 sets no lamp approval or installation requirements for it. Its only lighting references concern direction indicators and hazard warning lights during a minimum risk manoeuvre, and this lamp provides neither function."
+   "reason": "R157 approves automated lane keeping systems. A rear combination lamp with position, stop and reversing functions is not part of ALKS and does not determine its performance. The only lamp provisions concern direction indicators and hazard warning lights, which this product does not include."
   },
   "UN R161": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "Approval of a vehicle of category M1 and N1 with regard to its devices to prevent unauthorized use.",
-   "reason": "UN R161 covers anti-theft locking devices for steering, transmission and brakes. A rear combination lamp has no anti-theft function and is not part of such a system."
+   "reason": "UN R161 covers anti-theft locking devices (steering, transmission and brake locks combined with engine immobilisation). A rear combination lamp is a lighting and signalling device and plays no part in that system."
   },
   "UN R162": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "Approval of immobilizers which are intended to be permanently fitted to vehicles of any category... Approval of vehicles of category M1 ... with regard to their immobilizer(s).",
-   "reason": "The rear combination lamp is neither an immobilizer nor a part of one. R162 only permits optional optical status signals via existing lamps, which places no requirements on the lamp itself."
+   "scope_evidence": "Approval of immobilizers which are intended to be permanently fitted to vehicles of any category ... Approval of vehicles of category M1 ... with regard to their immobilizer(s).",
+   "reason": "R162 covers immobilizers and vehicles with regard to their immobilizer. A rear combination lamp is not part of an immobilizer system. The allowance to use lighting as optical status signals does not set requirements for the lamp itself, and Annex 6 explicitly excludes components such as lamps tested as part of the vehicle."
   },
   "UN R163": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "Approval of Vehicle Alarm Systems (VAS) which are intended to be permanently fitted to vehicles of any category... Approval of vehicles of category M1 ... with regard to their alarm system(s).",
-   "reason": "R163 approves vehicle alarm systems and vehicles with regard to their alarm system. It references only direction indicators and passenger compartment lights as optical warning signals. The rear position, stop and reversing lamp and retro-reflector are not alarm system components, and the regulation explicitly exempts standard lighting lamps from its tests."
+   "scope_evidence": "Approval of Vehicle Alarm Systems (VAS) which are intended to be permanently fitted to vehicles of any category... Lamps which are used as part of the optical warning devices and which are included in the standard car lighting system need not comply with the operation parameters",
+   "reason": "R163 approves vehicle alarm systems, and the rear combination lamp is not an alarm system component. The regulation only refers to existing vehicle lamps (mainly direction indicators) being used as optical alarm signals, and it exempts standard lighting lamps from its tests."
   },
   "UN R164": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to new studded pneumatic tyres of Classes C1, C2 and C3 with regard to their snow performance.",
-   "reason": "UN R164 approves studded tyres for snow performance. A rear combination lamp has no tyre-related function or part, so the regulation concerns an unrelated system."
+   "reason": "UN R164 approves studded tyres for snow performance. A rear combination lamp is not a tyre and does not determine tyre snow performance, so the regulation does not apply."
   },
   "UN R171": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This UN Regulation applies to the type approval of vehicles of Categories M and N2 with regard to their Driver Control Assistance Systems (DCAS).",
-   "reason": "R171 approves driver control assistance systems (automated longitudinal/lateral control). A rear combination lamp neither forms part of nor determines the performance of DCAS, so the regulation concerns other systems."
+   "scope_evidence": "applies to the type approval of vehicles of Categories M and N2 with regard to their Driver Control Assistance Systems (DCAS)",
+   "reason": "UN R171 approves vehicles with respect to driver control assistance systems (automated lateral and longitudinal control), not lighting or signalling devices. The mentions of traffic lights and direction indicators do not set requirements for a rear combination lamp."
   },
   "UN R174": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This Regulation applies to all seating positions in vehicles of categories M and N fitted with safety belt with regard to safety-belt reminders.",
-   "reason": "R174 concerns safety-belt reminder systems for seating positions. A rear combination lamp is an exterior lighting and signalling device and has no role in safety-belt reminders."
+   "reason": "UN R174 covers safety-belt reminder systems, which are in-cabin warning systems. A rear combination lamp is an exterior lighting and signalling device with no role in the belt reminder function, and the mentions only match on words like 'position' and 'visual warning'."
   },
   "UN R175": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
-   "scope_evidence": "This UN Regulation applies to the type approval of vehicles of Category M1 equipped with automatic transmission with regard to their Acceleration Control for Pedal Error systems (ACPE).",
-   "reason": "R175 approves the ACPE system, which limits acceleration when the driver presses the accelerator instead of the brake. A rear combination lamp is a passive lighting and signalling device and does not determine ACPE performance. The reversing lamp uses the reverse gear signal but plays no part in obstacle detection or acceleration control."
+   "scope_evidence": "applies to the type approval of vehicles of Category M1 equipped with automatic transmission with regard to their Acceleration Control for Pedal Error systems (ACPE)",
+   "reason": "R175 approves the vehicle's pedal-error acceleration control system, which the rear lamp neither forms part of nor determines. The regulation's only references to illumination and visibility concern test-area conditions, not lamps."
   },
   "UN GTR 9": {
    "applies": "no",
    "basis": "none",
    "functions_covered": [],
    "scope_evidence": "This global technical regulation (gtr) shall apply to the frontal surfaces of power driven vehicles",
-   "reason": "GTR 9 governs pedestrian protection for the vehicle's frontal surfaces, such as the bumper, bonnet and windscreen area. A rear combination lamp mounted at the vehicle's rear outboard corner lies outside that scope."
+   "reason": "GTR 9 covers pedestrian protection of the vehicle's frontal surfaces only. A rear combination lamp mounted at the vehicle rear is outside its scope."
   }
  },
  "superseded": {
-  "UN R3": "UN R150",
   "UN R23": "UN R148",
+  "UN R3": "UN R150",
   "UN R7": "UN R148"
  },
  "verdicts": {
   "UN R10": {
    "regulation": "UN R10",
    "include": true,
-   "reason": "The lamp contains LED modules on PCBs and possibly LED driver electronics, wiring and a harness connector. That makes it an electrical/electronic sub-assembly for M1 vehicles, and R10 scope explicitly covers components and separate technical units. Emissions and immunity requirements apply to the PCB and driver design."
+   "reason": "The lamp contains LED modules on a PCB with a harness connector, which makes it an electrical/electronic sub-assembly for M1 vehicles. R10 emission and immunity requirements apply to ESAs, and lighting and light-signalling is a listed immunity-related function."
+  },
+  "UN R128": {
+   "regulation": "UN R128",
+   "include": false,
+   "reason": "R128 approves only replaceable, standardised LED light source categories listed in Annex 1. The spec states the light sources are LED modules soldered on a PCB, which are non-replaceable and lamp-specific, so R128 would apply only on an assumption the spec contradicts. Whether the square component is a standardised source is speculative. The LED modules are assessed as part of the lamp under R148."
   },
   "UN R148": {
    "regulation": "UN R148",
    "include": true,
-   "reason": "R148 is the consolidated device-approval regulation for the rear position, stop and reversing lamps. It replaces R7 and R23, which are already removed as superseded. It covers photometry, colour (including lens transmission), reciprocal incorporation of position/stop functions sharing LEDs, and LED light-source provisions. These are the core functions of this product."
+   "reason": "R148 is the consolidated device approval regulation for rear position, stop and reversing lamps, which are three functions of this lamp. It replaces R7 and R23, which are superseded. It covers photometry, colour and the LED light-source modules of these functions."
   },
   "UN R150": {
    "regulation": "UN R150",
    "include": true,
-   "reason": "The product includes a moulded PMMA prism retro-reflector, which is a device type approved under R150 (rear Class IA/IB). R150 replaces R3, already removed as superseded. Its reflectivity, colour and grouping/incorporation provisions apply to this component."
+   "reason": "The lamp integrates a red rear retro-reflector with moulded prism optics, and its drawing callout specifies reflectivity at 5° incidence. R150 is the consolidated approval regulation for retro-reflectors (it replaces R3), including those that form an integral part of a lamp."
+  },
+  "UN R26": {
+   "regulation": "UN R26",
+   "include": false,
+   "reason": "R26 is a whole-vehicle external projection regulation. It reaches this lamp only through general radius and projection rules applied to the entire exterior surface. Its lamp-specific wording is limited to how projections are determined; it sets no design provisions for rear combination lamps. The link is therefore general and speculative."
   },
   "UN R48": {
    "regulation": "UN R48",
    "include": true,
-   "reason": "R48 is the installation regulation and explicitly lists rear position lamps, stop lamps, reversing lamps and rear retro-reflectors. Its requirements on mounting height and width, geometric visibility angles, colour, grouping/combination and electrical connection (e.g. reversing lamp only with reverse gear and ignition on) constrain the lamp design and its placement at the outboard rear corner of an M1 vehicle."
-  },
-  "UN R42": {
-   "regulation": "UN R42",
-   "include": false,
-   "reason": "R42 is a whole-vehicle approval for front and rear protective devices (bumper low-speed impact tests). Its only lamp-related clause is a post-test check that the vehicle's lighting devices still work. Whether this lamp is loaded depends on the OEM's bumper and body design, which the spec does not define. Its test procedures and requirements concern the bumper system, not the lamp, so citing it would import many irrelevant requirements. It is handled at vehicle level by the OEM."
+   "reason": "R48 governs installation on M1 vehicles of position, stop and reversing lamps and rear retro-reflectors, all of which this product contains. It covers mounting position, geometric visibility (e.g. the 45° outboard reversing lamp callout), colour and electrical switching, and the lamp design must support these."
   }
  },
  "selected": [
