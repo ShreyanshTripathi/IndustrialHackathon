@@ -44,9 +44,14 @@ class Matching(BaseModel):
 
 SYSTEM = """You compare two lists of engineering requirements derived from the same section of a UN Regulation:
 an expert's expected list (E-ids) and a submitted list (S-ids). Pair an expected requirement with a submitted
-one only if both state the same engineering obligation: the same scope (what it applies to), the same condition
-and the same constraint (limit, value or required property). Wording may differ. A submitted requirement that
-merges several obligations matches at most one of them. Each id may appear in at most one pair."""
+one only if all three agree:
+- scope: the same subject (the same lamp function, device, part or test object);
+- condition: the same circumstances in which it applies; dropping or adding a condition that changes when the
+  obligation applies breaks the match;
+- constraint: the same limit, value, range, unit or required property; the numbers must agree.
+Wording may differ. A submitted requirement that merges several obligations matches at most one of them. A
+submitted requirement that only refers to the expected content ("shall comply with paragraph X") does not match.
+Each id may appear in at most one pair."""
 
 
 def _match_group(expected: list[dict], submitted: list[dict]) -> list[tuple[str, str]]:
@@ -103,7 +108,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--expected", type=Path, default=ROOT / "cases/dev-rear-lamp/expected.json")
     args = ap.parse_args(argv)
     res = judge(json.loads(args.submission.read_text()), json.loads(args.expected.read_text()))
-    (args.submission.parent / "judge.json").write_text(json.dumps(res, indent=1, ensure_ascii=False))
+    report = args.submission.with_name(args.submission.stem + ".judge.json")
+    report.write_text(json.dumps(res, indent=1, ensure_ascii=False))
     print(f"requirement level  precision {res['precision']:.3f}  recall {res['recall']:.3f}  F2 {res['f2']:.3f}   "
           f"{res['n_submitted']} submitted / {res['n_expected']} expected / {res['n_matched']} matched")
     by_reg = collections.defaultdict(lambda: [0, 0, 0])
@@ -112,7 +118,7 @@ def main(argv: list[str] | None = None) -> int:
         t[0] += s["submitted"]; t[1] += s["expected"]; t[2] += s["matched"]
     for reg, (s, e, m) in sorted(by_reg.items()):
         print(f"  {reg:9} submitted {s:4}  expected {e:4}  matched {m:4}")
-    print(f"details in {args.submission.parent / 'judge.json'}; {summary()}")
+    print(f"details in {report}; {summary()}")
     return 0
 
 

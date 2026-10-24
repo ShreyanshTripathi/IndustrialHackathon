@@ -173,7 +173,7 @@ def select(profile: ProductProfile, g: Graph, workers: int = 8) -> dict:
 
     candidates = {r for r, a in results.items() if a.applies in ("yes", "maybe")}
     superseded = {}
-    for r in candidates:
+    for r in sorted(candidates):  # sorted: the dict goes into the reconciler prompt
         for newer in all_briefs[r]["consolidated_by"]:
             if newer in candidates:
                 superseded[r] = newer

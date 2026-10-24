@@ -1,0 +1,116 @@
+{
+ "product_name": "Front Bumper",
+ "product_type": "Front bumper assembly: the exterior front-end module of a passenger car, combining bumper cover, energy-absorbing structure, integrated front fog and direction indicator lamps, and ultrasonic parking sensors",
+ "vehicle_categories": [
+  "M1"
+ ],
+ "mounting_location": "Vehicle front end, across the full width below the bonnet/headlamps, attached to the front body structure (longitudinal members/crash boxes) and front-end carrier",
+ "functions": [
+  {
+   "name": "low-speed impact protection",
+   "description": "Bumper beam and energy absorber absorb and distribute energy in low-speed frontal impacts to limit damage to the vehicle front structure and components."
+  },
+  {
+   "name": "pedestrian lower-leg impact protection",
+   "description": "EPP foam energy absorber behind the fascia absorbs impact energy to reduce lower-leg loading in a pedestrian collision."
+  },
+  {
+   "name": "exterior styling and aerodynamic closure",
+   "description": "Painted bumper cover and lower grille close off the front end, define the exterior appearance and manage airflow."
+  },
+  {
+   "name": "front fog lamp (front fog illumination)",
+   "description": "Integrated LED front fog lamps provide illumination of the road ahead in fog or reduced visibility."
+  },
+  {
+   "name": "front direction indicator (turn signalling)",
+   "description": "Integrated LED front direction indicator lamps signal the driver's intention to change direction to other road users."
+  },
+  {
+   "name": "parking-assist obstacle detection",
+   "description": "Ultrasonic sensors mounted in the bumper detect obstacles ahead of the vehicle during low-speed manoeuvring and parking."
+  }
+ ],
+ "parts": [
+  {
+   "name": "Bumper cover (fascia)",
+   "role": "Outer visible skin of the front end; carries grille, lamps and sensors; styling and aerodynamic closure",
+   "material": "PP/EPDM-T20, painted",
+   "electrical": false
+  },
+  {
+   "name": "Energy absorber",
+   "role": "Absorbs impact energy for pedestrian lower-leg protection and low-speed impacts; located between fascia and beam",
+   "material": "EPP foam",
+   "electrical": false
+  },
+  {
+   "name": "Bumper beam (reinforcement)",
+   "role": "Structural cross member transferring low-speed impact loads into the vehicle body structure",
+   "material": "Aluminium extrusion or steel",
+   "electrical": false
+  },
+  {
+   "name": "Lower grille",
+   "role": "Closes the lower front opening while permitting cooling airflow; styling element",
+   "material": "ABS or PC/ABS",
+   "electrical": false
+  },
+  {
+   "name": "Front fog lamps",
+   "role": "Provide front fog illumination; housed in the bumper",
+   "material": "Lens: PC, hard-coated",
+   "electrical": true
+  },
+  {
+   "name": "Front direction indicator lamps",
+   "role": "Provide front turn signalling; housed in the bumper",
+   "material": "Lens: PC, hard-coated",
+   "electrical": true
+  },
+  {
+   "name": "Ultrasonic parking sensors",
+   "role": "Detect obstacles in front of the vehicle for parking assistance",
+   "material": "",
+   "electrical": true
+  },
+  {
+   "name": "Wiring harness",
+   "role": "Electrical connection of parking sensors (and lamps) to the vehicle electrical system",
+   "material": "",
+   "electrical": true
+  },
+  {
+   "name": "Mounting brackets",
+   "role": "Locate and fasten the fascia, lamps and sensors to the vehicle structure",
+   "material": "PA6-GF30",
+   "electrical": false
+  }
+ ],
+ "electronics": [
+  "LED front fog lamps (left and right)",
+  "LED front direction indicator lamps (left and right)",
+  "Ultrasonic parking-assist sensors",
+  "Wiring harness connecting sensors and lamps to the vehicle electrical system"
+ ],
+ "vehicle_interfaces": [
+  "Bumper beam bolted to the front longitudinal members / crash boxes of the body structure",
+  "Bumper cover fastened via PA6-GF30 brackets to the body, front-end carrier, wings and headlamp area",
+  "Electrical connection of fog lamps, direction indicators and parking sensors to the vehicle wiring via the bumper harness",
+  "Parking sensors interface with the vehicle's parking-assist control unit",
+  "Fog lamps and direction indicators controlled by the vehicle lighting switch/body electronics",
+  "Lower grille opening supplies cooling air to the radiator/front-end module"
+ ],
+ "drawing_observations": [
+  "No exploded-view drawing was provided; profile is based on the specification only"
+ ],
+ "uncertainties": [
+  "Bumper beam material not fixed: aluminium extrusion or steel",
+  "Number and exact positions of ultrasonic parking sensors not stated",
+  "Exact position of fog lamps and direction indicators within the bumper and their mounting heights/spacing not stated",
+  "Whether fog lamps and direction indicators are separate lamps or a combined unit per side is not stated",
+  "Whether the wiring harness also supplies the lamps or only the sensors is not stated",
+  "Presence of additional items (tow-eye cover, active grille shutters, radar/camera, headlamp washers, number-plate mounting) not stated",
+  "Fastener types and attachment points to the body not specified"
+ ]
+}

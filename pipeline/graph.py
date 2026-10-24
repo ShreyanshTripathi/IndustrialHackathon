@@ -185,7 +185,7 @@ def build() -> Graph:
         for p in paras:
             text, here = p["text"], p["annex"]
             if term_re:
-                for t in {m.lower() for m in term_re.findall(text)}:
+                for t in sorted({m.lower() for m in term_re.findall(text)}):  # sorted: set order changes per run
                     if t in terms and terms[t] != p["id"] and not any(
                             d == terms[t] for d in g.out(p["id"], "DEFINES")):
                         g.add_edge(p["id"], "USES_TERM", terms[t])

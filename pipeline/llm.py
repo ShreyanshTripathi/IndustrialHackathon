@@ -1,7 +1,8 @@
 """One way to call Claude for every agent: structured output, on-disk cache, cost tally.
 
 Every call is cached under data/llm_cache/ by a hash of (model, system, content, schema, effort), so a rerun of the
-pipeline costs nothing and gives the same answer. Delete the folder (or pass fresh=True) to force new calls.
+pipeline costs nothing and gives the same answer. Delete the folder, pass fresh=True, or set LLM_FRESH=1 to force new calls
+(the new answer then replaces the cached one).
 """
 
 from __future__ import annotations
@@ -52,10 +53,12 @@ def ask(schema: type[T], system: str, content: str | list, *, effort: str = "med
     key = hashlib.sha256(json.dumps([MODEL, system, messages, schema.model_json_schema(), effort],
                                     sort_keys=True, default=str).encode()).hexdigest()
     path = CACHE / f"{key}.json"
-    if path.is_file() and not fresh:
+    if path.is_file() and not fresh and not os.environ.get("LLM_FRESH"):
         with _lock:
             spent["cached"] += 1
         return schema.model_validate_json(json.loads(path.read_text())["output"])
+    if os.environ.get("LLM_OFFLINE"):
+        raise RuntimeError(f"LLM_OFFLINE is set and this {schema.__name__} request is not cached ({key[:12]})")
 
     response = _get_client().beta.messages.parse(
         model=MODEL,

@@ -2,6 +2,7 @@
 
     uv run python -m pipeline.run cases/dev-rear-lamp                   # all stages built so far
     uv run python -m pipeline.run cases/dev-rear-lamp --stop-after profile
+    LLM_OFFLINE=1 uv run python -m pipeline.run cases/dev-rear-lamp --resume   # no API calls: saved stages + cache
 
 Writes out/<case_id>/01_profile.json, 02_regulations.json, ... and, when the case ships an expected.json,
 prints how each stage compares with it.
@@ -33,6 +34,17 @@ def _save(out: Path, name: str, data) -> None:
     (out / name).write_text(json.dumps(data, indent=1, ensure_ascii=False))
 
 
+def _stage(out: Path, name: str, resume: bool, compute):
+    """Reuse out/<case>/<name> when resuming and it exists; otherwise compute and save it."""
+    path = out / name
+    if resume and path.is_file():
+        print(f"  (reused {path.relative_to(ROOT)})")
+        return json.loads(path.read_text())
+    data = compute()
+    _save(out, name, data)
+    return data
+
+
 def _eval_regulations(case_dir: Path, result: dict) -> None:
     expected = case_dir / "expected.json"
     if not expected.is_file():
@@ -54,14 +66,15 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("case_dir", type=Path)
     ap.add_argument("--stop-after", choices=STAGES, default=STAGES[-1])
-    ap.add_argument("--team-id", default="team-tbd", help="shown on the platform after registering")
+    ap.add_argument("--team-id", default="team-08", help="shown on the platform after registering")
+    ap.add_argument("--resume", action="store_true", help="reuse saved stage outputs in out/<case>/ where present")
     args = ap.parse_args(argv)
     case_dir = args.case_dir.resolve()
     out = ROOT / "out" / case_dir.name
 
     print("① product analyst")
-    profile: ProductProfile = analyse(case_dir)
-    _save(out, "01_profile.json", profile.model_dump())
+    profile = ProductProfile.model_validate(
+        _stage(out, "01_profile.json", args.resume, lambda: analyse(case_dir).model_dump()))
     print(f"  {profile.product_name}: {len(profile.functions)} functions, {len(profile.parts)} parts, "
           f"electronics={profile.electronics}")
     if args.stop_after == "profile":
@@ -70,8 +83,7 @@ def main(argv: list[str] | None = None) -> int:
 
     print("②③ regulation selection")
     g = Graph.load(DATA / "graph.json")
-    result = select(profile, g)
-    _save(out, "02_regulations.json", result)
+    result = _stage(out, "02_regulations.json", args.resume, lambda: select(profile, g))
     print(f"  selected: {result['selected']}")
     print(f"  superseded: {result['superseded']}")
     _eval_regulations(case_dir, result)
@@ -80,8 +92,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     print("④ section selectors")
-    sections = choose_all(profile, g, result)
-    _save(out, "03_sections.json", sections)
+    sections = _stage(out, "03_sections.json", args.resume, lambda: choose_all(profile, g, result))
     for s in sections:
         n = sum(len(u["paragraphs"]) for u in s["units"])
         print(f"  {s['regulation']}: {len(s['units'])} units ({n} paragraphs) of {len(s['units']) + len(s['skipped'])}")
@@ -90,16 +101,14 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     print("⑤ extractors")
-    reqs = extract_all(profile, g, sections)
-    _save(out, "04_requirements.json", reqs)
+    reqs = _stage(out, "04_requirements.json", args.resume, lambda: extract_all(profile, g, sections))
     print(f"  {len(reqs)} requirements: {dict(collections.Counter(r['source']['regulation'] for r in reqs))}")
     if args.stop_after == "requirements":
         print(llm.summary())
         return 0
 
     print("⑥ verifier and critic")
-    reqs = verify(profile, g, reqs)
-    _save(out, "05_verified.json", reqs)
+    reqs = _stage(out, "05_verified.json", args.resume, lambda: verify(profile, g, reqs))
     print(f"  kinds: {dict(collections.Counter(r['kind'] for r in reqs))}")
     print(f"  low traceability (<50% shared wording with source): {sum(r['trace'] < 50 for r in reqs)}")
     reqs = kept(reqs)
