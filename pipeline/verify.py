@@ -51,7 +51,8 @@ kind of statement each one is:
 - condition_not_met: holds only if the product has a feature the product description rules out (for example
   "if the lamp uses replaceable light sources" when it uses LED modules). If the description is silent about the
   feature, do not use this label.
-- not_applicable: concerns a function, device or vehicle category this product does not have.
+- not_applicable: concerns only functions, devices or vehicle categories this product does not have. A
+  requirement whose scope covers the product together with others is not this.
 
 Label every id."""
 
@@ -89,16 +90,22 @@ def kept(reqs: list[dict]) -> list[dict]:
     return [r for r in reqs if r.get("kind", "product_requirement") in KEEP]
 
 
-DEDUP_MIN = 93  # same requirement twice within one regulation; platform: 93 -> F2 0.630 vs 97 -> 0.625 (dev)
+DEDUP_MIN = 93  # same requirement twice within one paragraph; platform: 93 -> F2 0.630 vs 97 -> 0.625 (dev)
+
+
+def _para(r: dict) -> tuple:
+    return r.get("node") or (r["source"]["regulation"], r["source"].get("paragraph"))
 
 
 def dedup(reqs: list[dict]) -> list[dict]:
-    """Drop near-identical requirements, keeping the one on the higher-ranked paragraph; document order kept."""
+    """Drop near-identical requirements on the same paragraph; document order kept.
+
+    Only within a paragraph: across paragraphs, near-identical wording is usually a different obligation (the same
+    type-approval sentence for two lamps citing different regulations, broadband vs narrowband limits)."""
     norm = [" ".join(r["text"].lower().split()) for r in reqs]
     order = sorted(range(len(reqs)), key=lambda i: (-reqs[i].get("para_score", 50), i))
     kept: list[int] = []
     for i in order:
-        reg = reqs[i]["source"]["regulation"]
-        if not any(reqs[j]["source"]["regulation"] == reg and fuzz.ratio(norm[i], norm[j]) >= DEDUP_MIN for j in kept):
+        if not any(_para(reqs[j]) == _para(reqs[i]) and fuzz.ratio(norm[i], norm[j]) >= DEDUP_MIN for j in kept):
             kept.append(i)
     return [reqs[i] for i in sorted(kept)]

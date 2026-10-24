@@ -29,7 +29,8 @@ EXAMPLES_RULE = """- <expert_examples> shows how the experts wrote requirements 
 class Extracted(BaseModel):
     paragraph: str = Field(description="the [P..] reference the obligation comes from, e.g. 'P3'")
     text: str = Field(description="one engineering obligation, close to the regulation's wording")
-    applies_to: str = Field(description="which product function or part it concerns")
+    applies_to: str = Field(description="which of the product's functions or parts it touches; a label only, it "
+                                        "does not narrow the text")
     test_case: str = Field(description="how to verify it: method or annex, condition, pass criterion")
 
 
@@ -41,27 +42,38 @@ SYSTEM = """You turn UN Regulation text into the engineering requirements a spec
 style of an expert regulatory requirements list.
 
 Rules:
-- One obligation per requirement. A paragraph with two "shall" statements, or one limit per frequency band, per
-  colour or per lamp function, gives several requirements.
-- Stay close to the regulation's wording. Make each requirement stand alone: name the subject ("The stop lamp
-  shall ..." rather than "It shall ..."), and keep the condition it depends on ("When measured according to
-  Annex 8, ...", "If the lamp is of category S1, ...").
+- One obligation per requirement. Separate obligations give separate requirements: two "shall" statements, one
+  limit per band, direction or class, one case per item of an enumerated list of cases. A list that is the
+  subject or the condition of a single obligation stays in that one requirement.
+- Stay close to the regulation's wording. Make each requirement stand alone: name its subject (taken from the
+  paragraph or its heading, not "It shall ..."), and keep the condition it depends on (the test method, the
+  configuration, the class).
+- The product decides which obligations you write, never what they say. Write each obligation with the
+  regulation's own scope, even where the product falls under only part of it: its subject, the vehicle
+  categories, device classes or variants it names, its lists of values, and its exceptions, alternatives and
+  permissions for other configurations or optional equipment. A sentence that relaxes or extends an obligation
+  for another case belongs to that obligation: keep it with it, or write it as its own requirement.
 - Keep every number, unit, tolerance and referenced paragraph or annex exactly.
 - Include obligations on the device, its markings, its performance and tests, and its installation on the
   vehicle where the text covers installation.
-- Skip: obligations for functions, devices or vehicle categories this product does not have; duties of type
-  approval authorities or technical services; application paperwork; definitions; notes and explanations with no
-  obligation; pure cross-references with no content of their own.
+- Skip: obligations whose whole scope lies outside the product (only about functions, devices or vehicle
+  categories it does not have); when in doubt, write it. Also skip duties of type approval authorities or
+  technical services; application paperwork; definitions; notes and explanations with no obligation; pure
+  cross-references with no content of their own.
 - Paragraphs may give no requirement at all; return an empty list if none apply.
 
-Examples of the expected style:
-- "The markings shall be clearly legible and indelible."
-- "The retro-reflective devices shall bear the trade name or mark of the applicant."
-- "When measurements are made using the method described in Annex 8, the limit in the 400 to 1,000 MHz frequency
-  band shall remain constant at 53 dB microvolts/m."
-- "When visual examination of a reversing lamp appears to reveal substantial local variations of intensity, no
-  intensity measured between two of the directions of measurement of the grid shall be below 50 per cent of the
-  lower minimum intensity of the two prescribed for these directions."
+Examples of the expected style (from a different regulation; match the form, not the content):
+- "The approval mark shall be clearly legible and be indelible."
+- "When a collision is not prevented, the ACPE shall ensure the collision speed is not greater than 70% of that
+  speed the vehicle would have had in the same position and under the same circumstances but without any ACPE
+  intervention."
+- "Notwithstanding paragraph 5.1.2., in the case of systems that implement force-based triggering of the ACPE, the
+  system shall consider an accelerator control force greater than the triggering threshold as accelerator
+  control misapplication."
+- "When a vehicle is equipped with a means to manually deactivate the ACPE, the ACPE shall be automatically
+  reinstated at the initiation of any new engine start (or run cycle, as relevant), except that this requirement
+  does not apply when a new engine start (or run cycle, as relevant) is performed automatically, e.g., the
+  operation of a stop/start system."
 """
 
 
@@ -87,8 +99,9 @@ def _definitions(g: Graph, pids: list[str], limit: int = 15) -> list[str]:
 def _profile_brief(profile: ProductProfile) -> str:
     funcs = "; ".join(f.name for f in profile.functions)
     parts = "; ".join(p.name for p in profile.parts)
-    return (f"{profile.product_name}: {profile.product_type}. Vehicle categories: {', '.join(profile.vehicle_categories)}. "
-            f"Mounting: {profile.mounting_location}.\nFunctions: {funcs}\nParts: {parts}\n"
+    scope = f" ({profile.regulatory_scope})" if profile.regulatory_scope else ""
+    return (f"{profile.product_name}: {profile.product_type}. Vehicle categories: {', '.join(profile.vehicle_categories)}"
+            f"{scope}. Mounting: {profile.mounting_location}.\nFunctions: {funcs}\nParts: {parts}\n"
             f"Electronics: {'; '.join(profile.electronics) or 'none'}")
 
 

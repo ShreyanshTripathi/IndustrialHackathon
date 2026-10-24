@@ -71,7 +71,8 @@ Pick:
 - conformity-of-production provisions that set requirements on the product;
 - annexes and annex parts with test methods or limits whose results the product must meet.
 Do not pick:
-- sections for functions, devices or vehicle categories the product does not have;
+- sections only about functions, devices or vehicle categories the product does not have (a section that covers
+  the product's functions or category together with others is picked);
 - application documents, communication forms, approval procedures for authorities, transitional provisions;
 - definitions (they are given to the extractor separately).
 When unsure, pick the unit: a later agent drops paragraphs that do not apply."""

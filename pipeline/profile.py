@@ -30,6 +30,9 @@ class ProductProfile(BaseModel):
     product_name: str
     product_type: str = Field(description="one line: what kind of vehicle component or system this is")
     vehicle_categories: list[str] = Field(description="UNECE categories, e.g. ['M1']")
+    regulatory_scope: str = Field(default="", description="what the specification says about the scope of the "
+                                  "regulations or the vehicle categories they cover, verbatim; empty if it "
+                                  "says nothing")
     mounting_location: str = Field(description="where on the vehicle, e.g. 'rear, outboard corners'")
     functions: list[Function]
     parts: list[Part]
@@ -48,8 +51,9 @@ List every distinct function the product performs, separately (a combination lam
 three functions). List the parts. Note all electrical and electronic content, since it matters for which
 regulations apply. Note how and where it is mounted on the vehicle. If the drawing shows something the spec does
 not mention, record it. When the specification states a fact (a material, a light source technology), it
-overrides what you infer from the drawing: do not reopen it as an uncertainty. Do not name regulations; only
-describe the product."""
+overrides what you infer from the drawing: do not reopen it as an uncertainty. If the specification says which
+vehicle categories the regulations cover beyond the product's own, copy that into regulatory_scope. Do not name
+regulations; only describe the product."""
 
 
 def analyse(case_dir: Path) -> ProductProfile:
