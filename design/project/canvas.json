@@ -1,0 +1,24 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-24T08:05:00Z"},
+  "title": "Talk to Your Building — UI/UX",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 900, "title": "01 Navigate — step-free route", "expand": "fill"},
+    "Edit.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 900, "title": "02 Edit — preview, then confirm", "expand": "fill"},
+    "Voice.dc.html": {"x": 0, "y": 1300, "w": 390, "h": 844, "title": "03 Voice — hands-free guidance (phone)"},
+    "Logistics.dc.html": {"x": 470, "y": 1300, "w": 1180, "h": 820, "title": "04 Forklift display — blocked aisle"},
+    "Build.dc.html": {"x": 1730, "y": 1300, "w": 1440, "h": 900, "title": "05 Build — building from a floor plan", "expand": "fill"},
+    "View3D.dc.html": {"x": 0, "y": 2600, "w": 1440, "h": 900, "title": "06 3D view — building and objects", "expand": "fill", "is_interactive": true},
+    "Kit3D.dc.html": {"x": 1520, "y": 2600, "w": 1440, "h": 1180, "title": "07 3D object kit — how each type is modelled"},
+    "Style.dc.html": {"x": 0, "y": 4180, "w": 1440, "h": 1240, "title": "Visual system"}
+  },
+  "order": ["Main.dc.html", "Edit.dc.html", "Voice.dc.html", "Logistics.dc.html", "Build.dc.html", "View3D.dc.html", "Kit3D.dc.html", "Style.dc.html"],
+  "notes": {
+    "rowCore": {"x": 0, "y": -300, "text": "Core flows — find, route, change the building", "kind": "title1", "maxW": 2960},
+    "rowField": {"x": 0, "y": 1000, "text": "In the field — voice, vehicles, new buildings", "kind": "title1", "maxW": 3170},
+    "row3d": {"x": 0, "y": 2300, "text": "3D — the building and every object in it", "kind": "title1", "maxW": 2960}
+  },
+  "designSystems": []
+}
