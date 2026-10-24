@@ -92,8 +92,23 @@ About $30 of the $150 budget spent so far. Approximate cost per stage:
 | One judge run | ~$0.5 | ~30 s |
 | Rerun from cache or with `--resume` | $0 | seconds |
 
+## Sub-goal: `subgoal-dev` (UN R175 0.1.0 → 1.0.0)
+
+**`out/subgoal-dev/changes.json`**: 23 changes (6 modified, 1 removed, 16 added). Passes `validate.py --requirements-old`. Built in plain code (`pipeline/subgoal.py`), with no model calls. Scored offline with `eval/subgoal_score.py` against the 24 expected changes:
+
+| Measure | Result |
+|---|---|
+| Flagged recall (the platform's main sub-goal measure) | **0.917** (22/24) |
+| Flagged precision | 0.957 |
+| Modified/removed: flagged / right change type | 7/7, 7/7 |
+| Added: found / submitted | 15/17, 16 |
+| `new_text` wording vs expected (modified / added) | 93% / ~91% similar |
+
+- **Missed (2):** "Tests without a target may be combined where feasible" (a clause the experts split out of a sentence), and the second of two 6.6.2.1 items, which the PDF lists inline as "(a) …, (b) …".
+- **Reasons:** use the expected template ("'a' became 'b'; 'c' was added"). R-018 and R-090 match the expected reason almost word for word.
+- **Caveat:** the two thresholds (`MODIFIED_MIN = 56`, `ADDED_MAX = 75`) were tuned on this one pair, which is the only one we have.
+
 ## Not done yet
 
-- **Sub-goal (⑦ change analyst):** not built; it's 15% of the score. The version matching it needs already exists in the graph.
 - **UI and demo:** not built; it's 20% of the score.
 - **Held-out case `heldout-front-bumper`:** released Sunday 08:00. Uploads close 13:00, and the last upload counts.

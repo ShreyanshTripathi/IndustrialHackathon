@@ -31,7 +31,7 @@ The orchestrator (`pipeline/run.py`) is plain code. It runs the stages in order,
 | ④ | Section selectors | Claude, one per regulation | profile + heading tree + graph references | `03_sections.json` | ⏳ next |
 | ⑤ | Extractors | Claude, one per section | paragraphs + definitions | `04_requirements.json` | ⏳ next |
 | ⑥ | Verifier and critic | code + Claude | requirements + corpus | `05_verified.json`, `submission.json` | ⏳ |
-| ⑦ | Change analyst (sub-goal) | code + Claude | graph `ALIGNS` edges + `requirements_old.json` | `changes.json` | ⏳ alignment done |
+| ⑦ | Change analyst (sub-goal, `pipeline/subgoal.py`) | code only | `old.pdf`, `new.pdf`, `requirements_old.json` | `out/subgoal-<case>/changes.json` | ✅ dev: flagged recall 0.92 |
 
 ## Data layer
 
