@@ -1,3 +1,5 @@
 industrial-agents-hackathon-2026/
 .env
 regulations
+project_detail/
+.DS_Store
